@@ -1,0 +1,43 @@
+<section id="ourStoreSection">
+  <div id="openingTimes">
+    <hr/>
+    <h2>We are opened: Po-Pa 7:00-16:00</h2>
+    <hr/>
+  </div>
+
+  <div id="layout">
+    <div id="welcomeText">
+      <h1>Vítáme Vás!</h1>
+      <p>
+      Naše společnost Vám nabízí jen ty nejkvalitnější služby v oboru. Neváhejte a využijte našich
+      kvalitních služeb, moderních metod. Náš profesionální personál je vám vždy plně k dispozici. Naší předností je
+      neustálé zkvalitňování a vylepšování námi nabízených služeb. Důkazem je stále vzrůstající počet spokojených
+      zákazníků.</p>
+      <p id="address">2073 Schrattenthal, Waitzendorf 29</p>
+    </div>
+
+    <div id="googleMaps">
+      <h3>Where you find us:</h3>
+      <div id="map"></div>
+    </div>
+  </div>
+  <div id="dummy">H</div>
+</section>
+
+<script type="text/javascript">
+  function initMap() {
+    var location = {lat: -25.363, lng: 131.044};
+    var map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 4,
+      center: location
+    });
+
+    var marker = new google.maps.Marker({
+      position: location,
+      map: map
+    });
+  }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYzXj5wF4L6mChyyc5xwfb2QT1QEZ9VN8&callback=initMap">
+</script>

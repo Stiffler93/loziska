@@ -1,0 +1,28 @@
+
+.cont {
+  margin-top: 6.5em;
+}
+
+#ourStockSection {
+  display: flex;
+  background-color: rgba(244, 95, 66, 0.1);
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.card {
+  margin: 1.5em 1em;
+}
+
+.card:hover {
+  border-width: 3px;
+  border-color: #ff8080;
+}
+
+@media (min-width: 1200px) {
+  .products {
+    width: calc(1200px - 2 * 1em);
+    margin: 0 auto;
+  }
+}

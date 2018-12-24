@@ -1,0 +1,36 @@
+<div id="navigationBarDiv">
+  <nav class="navbar navbar-expand-md navbar-light fixed-top">
+    <a class="navbar-brand" href="#"><img class="navbar-logo" src="assets/icons/icon.png"/></a>
+
+    <button class="navbar-toggler" type="button" aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse navbar-nav" id="navbarSupportedContent" [collapse]="isCollapsed">
+      <div id="menuItems">
+        <li class="nav-item nav-link">
+          <a routerLink="/our-store" routerLinkActive="active">Our Store</a>
+        </li>
+        <li class="nav-item nav-link">
+          <a routerLink="/our-stock" routerLinkActive="active">Our Stock</a>
+        </li>
+      </div>
+
+      <div id="contactInformation">
+        <div>
+          <i class="fa fa-phone"></i>
+          <span>0495/49q34t90</span>
+        </div>
+        <div>
+          <i class="fa fa-at"></i>
+          <span>sdfoij@adsfwe.com</span>
+        </div>
+      </div>
+
+      <form class="form-inline m-2">
+        <input class="^ mr-2" type="search" placeholder="Search Product" aria-label="Search">
+        <button class="btn btn-success" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+</div>

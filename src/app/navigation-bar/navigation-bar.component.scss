@@ -1,0 +1,142 @@
+nav {
+  background-color: rgba(0, 0, 255, 0.1);
+}
+
+.navbar-logo {
+  height: 3em;
+}
+
+.navbar {
+  background-color: #ff8080;
+}
+
+#menuItems {
+  display: flex;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  flex-direction: row;
+  background-color: rgba(255, 255, 255, 0.1);
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+#menuItems a {
+  text-decoration: none;
+  color: black;
+}
+
+#menuItems li {
+  text-align: center;
+  flex-basis: 45%;
+  border-style: solid;
+  boder-width: 1px;
+  margin: 0.3em 0;
+}
+
+#navbarSupportedContent > .form-inline {
+  width: 100%;
+  flex-wrap: nowrap;
+}
+
+.nav-item {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+#navbarSupportedContent #contactInformation {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 0.5em;
+  font-size: 1.2em;
+}
+
+#navbarSupportedContent #contactInformation > div {
+  display: inline-flex;
+  flex-basis: 50%;
+  flex-direction: column;
+  text-align: center;
+  padding: 1.5em 1em 0.5em 1em;
+}
+
+#navbarSupportedContent #contactInformation > div > i  {
+  font-size: 2em;
+}
+
+.form-control {
+  flex: 1;
+}
+
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+
+  #menuItems {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    background-color: rgba(255, 255, 255, 0);
+    width: auto;
+  }
+
+  #menuItems li {
+    margin: 0 0.5em;
+    border-width: 0;
+    flex-basis: auto;
+    font-size: 1.5em;
+  }
+
+  #navbarSupportedContent > .form-inline {
+    display: none;
+  }
+
+  .nav-item {
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+
+  #navbarSupportedContent #contactInformation {
+    margin-top: 0em;
+  }
+
+  #navbarSupportedContent #contactInformation > div {
+    display: inline-flex;
+    flex-direction: row;
+    padding: 0;
+    justify-content: center;
+  }
+
+  #navbarSupportedContent #contactInformation {
+    justify-content: flex-end;
+    width: auto;
+  }
+
+  #navbarSupportedContent #contactInformation > div > span {
+    line-height: 2em;
+    vertical-align: middle;
+    margin: 0 .3em;
+  }
+
+  #navbarSupportedContent #contactInformation > div:nth-of-type(2) {
+    display: none;
+  }
+}
+
+@media (min-width: 992px) {
+  #navbarSupportedContent > .form-inline {
+    display: flex;
+    max-width: 20em;
+    justify-content: flex-end;
+  }
+}
+
+@media (min-width: 1320px) {
+
+  #navbarSupportedContent #contactInformation > div:nth-of-type(2) {
+    display: inline-flex;
+    margin: 0 0.5em;
+  }
+}
+
+
+
