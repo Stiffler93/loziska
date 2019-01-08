@@ -1,5 +1,7 @@
 
-.cont {
+#container {
+  display: flex;
+  flex-direction: column;
   margin-top: 6.5em;
 }
 
@@ -11,18 +13,75 @@
   width: 100%;
 }
 
-.card {
-  margin: 1.5em 1em;
+#productDropdown {
+  width: 90%;
+  margin: 0 auto;
 }
 
-.card:hover {
-  border-width: 3px;
-  border-color: #ff8080;
+#dropdown-basic {
+  width: 100%;
+
+  li {
+    margin: 0.2em 0;
+  }
 }
 
-@media (min-width: 1200px) {
-  .products {
-    width: calc(1200px - 2 * 1em);
-    margin: 0 auto;
+.dropdown-item {
+  cursor: pointer;
+
+  .productItem {
+    display: flex;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      i {
+        font-size: 3em;
+      }
+    }
+
+    span {
+      flex: 1;
+      display: block;
+      white-space: normal;
+      -ms-word-wrap: break-spaces;
+      word-wrap: break-spaces;
+      margin: 0 0 0 0.7em;
+      text-align: justify;
+    }
+  }
+}
+
+#button-basic {
+
+  i {
+    font-size: 1.4em;
+    margin: 0.1em;
+  }
+
+  span {
+    align-self: center;
+    font-size: 1.3em;
+  }
+}
+
+.filterOptions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0.4em;
+
+  .option {
+    display: flex;
+    margin: 0.5em 0.5em 0;
+
+    span {
+      display: inline-block;
+      margin: 0.1em 0.4em;
+      white-space: nowrap;
+    }
+
   }
 }

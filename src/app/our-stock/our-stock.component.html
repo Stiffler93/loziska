@@ -1,54 +1,52 @@
 <section id="ourStockSection">
-  <div class="container-fluid cont">
-    <div class="row products">
-      <div class="col-md-6 col-lg-4">
-        <div class="card">
-          <img class="card-img-top" src="assets/icons/icon.png" alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4">
-        <div class="card">
-          <img class="card-img-top" src="assets/icons/icon.png" alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4">
-        <div class="card">
-          <img class="card-img-top" src="assets/icons/icon.png" alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4">
-        <div class="card">
-          <img class="card-img-top" src="assets/icons/icon.png" alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4">
-        <div class="card">
-          <img class="card-img-top" src="assets/icons/icon.png" alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4">
-        <div class="card">
-          <img class="card-img-top" src="assets/icons/icon.png" alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
+  <div id="container">
+    <div id="productDropdown" class="btn-group" dropdown>
+      <button id="button-basic" dropdownToggle type="button" class="btn btn-lg dropdown-toggle"
+              aria-controls="dropdown-basic">
+          <i class="{{selectedProduct.icon}}"></i>
+          <span>{{selectedProduct.name}}</span>
+          <span class="caret"></span>
+      </button>
+
+      <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+          role="menu" aria-labelledby="button-basic">
+
+        <li role="menuitem" *ngFor="let product of availableProducts">
+          <a class="dropdown-item" (click)="changeProduct(product)">
+            <div class="productItem">
+              <div>
+                <i class="{{product.icon}}"></i>
+              </div>
+              <span>
+                {{product.text}}
+              </span>
+            </div>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+
+    <div class="filterOptions">
+      <div class="option" *ngFor="let option of selectedProduct.parameters">
+        <span>{{option}}</span>
+        <form>
+          <input type="text" name="{{option}}">
+        </form>
       </div>
     </div>
+
+    <div class="data-table">
+      <kendo-grid
+        [data]="gridData"
+        [height]="510"
+        [columnMenu]="true"
+        [filterable]="true"
+        [sortable]="true">
+        <kendo-grid-column [field]="ProductID" title="ID"></kendo-grid-column>
+        <kendo-grid-column [field]="ProductName" title="Name"></kendo-grid-column>
+      </kendo-grid>
+    </div>
+
   </div>
 </section>

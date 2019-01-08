@@ -29,9 +29,13 @@
             "styles": [
               "src/styles.scss",
               "node_modules/font-awesome/css/font-awesome.min.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/angular-ui-grid/ui-grid.min.css",
+              "node_modules/@progress/kendo-theme-bootstrap/dist/all.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/angular-ui-grid/ui-grid.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -87,9 +91,13 @@
             "styles": [
               "src/styles.scss",
               "node_modules/font-awesome/css/font-awesome.min.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/angular-ui-grid/ui-grid.min.css",
+              "node_modules/@progress/kendo-theme-bootstrap/dist/all.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/angular-ui-grid/ui-grid.min.js"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"
