@@ -12,8 +12,8 @@ export class OurStockComponent implements OnInit {
   availableProducts: Product[] = [];
   selectedProduct: Product;
 
-  public columns: any[] = [{field: 'ProductID'}, {field: 'ProductName'}];
-  public gridData: any;
+  public columnDefs: object[] = [];
+  public gridData: object[] = [];
 
   constructor(private data: DataService) {
   }
@@ -29,15 +29,11 @@ export class OurStockComponent implements OnInit {
     this.availableProducts.push(p2);
 
     this.selectedProduct = this.availableProducts[0];
-    this.gridData = this.products;
-
-    this.data.test().then(data => {
-      console.log('test worked!');
-    });
 
     this.data.getData().then(data => {
       console.log('set data');
-      this.gridData = data;
+      this.gridData = data.data;
+      this.columnDefs = data.headers.filter(header => header != "").map(header => [{headerName: header, field: header}][0]);
     });
   }
 

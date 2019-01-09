@@ -10,14 +10,14 @@ import {NavigationBarComponent} from './navigation-bar/navigation-bar.component'
 import {WelcomePageComponent} from './welcome-page/welcome-page.component';
 import {OurStockComponent} from './our-stock/our-stock.component';
 import {OurStoreComponent} from './our-store/our-store.component';
-import {GridModule} from '@progress/kendo-angular-grid';
 import {PapaParseModule} from 'ngx-papaparse';
 import {HttpClientModule} from '@angular/common/http';
+import {AgGridModule} from 'ag-grid-angular';
 
 @NgModule({
   declarations: [AppComponent, NavigationBarComponent, WelcomePageComponent, OurStockComponent, OurStoreComponent],
-  imports: [BrowserModule, AppRoutingModule, AngularFontAwesomeModule, CollapseModule.forRoot(), BsDropdownModule.forRoot(), GridModule,
-    PapaParseModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, AngularFontAwesomeModule, CollapseModule.forRoot(), BsDropdownModule.forRoot(),
+    PapaParseModule, HttpClientModule, AgGridModule.withComponents([])],
   providers: [],
   bootstrap: [AppComponent]
 })

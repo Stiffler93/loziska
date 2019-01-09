@@ -2,6 +2,7 @@
 #container {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   margin-top: 6.5em;
 }
 
@@ -10,7 +11,8 @@
   background-color: rgba(244, 95, 66, 0.1);
   flex-direction: column;
   justify-content: center;
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
 }
 
 #productDropdown {
@@ -84,4 +86,11 @@
     }
 
   }
+}
+
+.dataTable {
+  width: 80%;
+  margin: 0 auto;
+  flex: 1;
+  margin-bottom: 0.8em;
 }

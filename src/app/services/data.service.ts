@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Papa} from 'ngx-papaparse';
 import {HttpClient} from '@angular/common/http';
 import {resolve} from 'q';
+import {TableData} from './model/TableData';
 
 @Injectable({
   providedIn: 'root'
@@ -9,30 +10,32 @@ import {resolve} from 'q';
 export class DataService {
 
   loaded: Boolean = false;
-  data: any[] = [];
+  data: object[] = [];
+  headers: string[] = [];
 
   constructor(private papa: Papa, private http: HttpClient) {
   }
 
-  private loadData(): Promise<any[]> {
+  private loadData(): Promise<TableData> {
     console.log('load Data');
 
     return this.http.get('assets/data/Gufera.csv', {responseType: 'text'})
       .toPromise()
-      .then(data => {
-        this.parseData(data);
-        // resolve(this.data);
-        return this.data;
+      .then(stream => {
+        this.parseData(stream);
+        return new TableData(this.headers, this.data);
       });
   }
 
-  private parseData(data) {
+  private parseData(stream: string) {
     console.log('parse Data');
 
-    this.papa.parse(data, {
+    this.papa.parse(stream, {
+      header: true,
       complete: (result) => {
         console.log('Parsed: ', result);
         this.data = result.data;
+        this.headers = result.meta.fields;
         this.loaded = true;
       }, error: error1 => {
         console.log('Error during Parsing');
@@ -41,18 +44,14 @@ export class DataService {
     });
   }
 
-  public getData(): Promise<any[]> {
-    return new Promise<any[]>(resolve => {
+  public getData(): Promise<TableData> {
+    return new Promise<TableData>(resolve => {
       if (!this.loaded) {
         resolve(this.loadData());
       } else {
-        resolve(this.data);
+        resolve(new TableData(this.headers, this.data));
       }
     });
   };
-
-  public test(): Promise<string> {
-    return this.http.get('assets/data/Gufera.csv', {responseType: 'text'}).toPromise();
-  }
 
 }

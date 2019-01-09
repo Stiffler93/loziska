@@ -1,0 +1,29 @@
+{
+  "products": [
+    {
+      "name": "Gufera",
+      "icon": "fa fa-universal-access",
+      "text": "This is some text that describes this product. It should be rather long to see how longer test is displayed. The text should also be auto wrapped."
+    },
+    {
+      "name": "Klinove_remeny",
+      "icon": "fa fa-ambulance",
+      "text": "This is some text that describes this product. It should be rather long to see how longer test is displayed. The text should also be auto wrapped."
+    },
+    {
+      "name": "Loziska",
+      "icon": "fa fa-universal-access",
+      "text": "This is some text that describes this product. It should be rather long to see how longer test is displayed. The text should also be auto wrapped."
+    },
+    {
+      "name": "O-krouzky",
+      "icon": "fa fa-ambulance",
+      "text": "This is some text that describes this product. It should be rather long to see how longer test is displayed. The text should also be auto wrapped."
+    },
+    {
+      "name": "Segerovy",
+      "icon": "fa fa-universal-access",
+      "text": "This is some text that describes this product. It should be rather long to see how longer test is displayed. The text should also be auto wrapped."
+    }
+  ]
+}

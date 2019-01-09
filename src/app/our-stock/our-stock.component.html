@@ -36,17 +36,25 @@
       </div>
     </div>
 
-    <div class="data-table">
-      <kendo-grid
-        [data]="gridData"
-        [height]="510"
-        [columnMenu]="true"
-        [filterable]="true"
-        [sortable]="true">
-        <kendo-grid-column [field]="ProductID" title="ID"></kendo-grid-column>
-        <kendo-grid-column [field]="ProductName" title="Name"></kendo-grid-column>
-      </kendo-grid>
-    </div>
+    <!--<div class="data-table">-->
+      <!--<kendo-grid-->
+        <!--[data]="gridData"-->
+        <!--[height]="510"-->
+        <!--[columnMenu]="true"-->
+        <!--[filterable]="true"-->
+        <!--[sortable]="true">-->
+        <!--<kendo-grid-column [field]="ProductID" title="ID"></kendo-grid-column>-->
+        <!--<kendo-grid-column [field]="ProductName" title="Name"></kendo-grid-column>-->
+      <!--</kendo-grid>-->
+    <!--</div>-->
 
   </div>
+
+  <ag-grid-angular
+    class="ag-theme-balham dataTable"
+    [enableSorting]="true"
+    [rowData]="gridData"
+    [columnDefs]="columnDefs"
+  >
+  </ag-grid-angular>
 </section>
