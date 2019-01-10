@@ -1,13 +1,15 @@
 
 export class Product {
 
-  name: String;
-  icon: String;
-  text: String;
+  name: string;
+  icon: string;
+  text: string;
+  columnDefs: object[] = undefined;
+  gridData: object[] = undefined;
 
-  parameters: String[];
+  parameters: string[] = [];
 
-  constructor(name: String, icon: String, text: String, parameters: String[] = []) {
+  constructor(name: string, icon: string, text: string, parameters: string[] = []) {
     this.name = name;
     this.icon = icon;
     this.text = text;

@@ -1,6 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Product} from './model/Product';
 import {DataService} from '../services/data.service';
+import {ConfigurationService} from '../services/configuration.service';
+import {GridOptions} from 'ag-grid-community';
+import {AgGridColumn} from 'ag-grid-angular';
 
 @Component({
   selector: 'app-our-stock',
@@ -9,35 +12,42 @@ import {DataService} from '../services/data.service';
 })
 export class OurStockComponent implements OnInit {
 
+  @ViewChild('#dataTable') ag_grid;
+
   availableProducts: Product[] = [];
-  selectedProduct: Product;
+  selectedProduct: Product = new Product('', '', '');
 
-  public columnDefs: object[] = [];
-  public gridData: object[] = [];
+  public gridOptions: GridOptions = {
+    enableColResize: true,
+    enableSorting: true,
+    onModelUpdated: () => {
+      console.log('grid model updated');
+      // this.gridOptions.api.sizeColumnsToFit();
+      this.gridOptions.columnApi.autoSizeAllColumns();
+      // this.gridOptions.api.refreshView();
+    }
+  }
 
-  constructor(private data: DataService) {
+  constructor(private data: DataService, private configuration: ConfigurationService) {
   }
 
   ngOnInit() {
-    const p1: Product = new Product('Universal', 'fa fa-universal-access',
-      'This is some text that describes this product. It should be rather long to see how longer test is displayed. ' +
-      'The text should also be auto wrapped.');
-    const p2: Product = new Product('Ambulance', 'fa fa-ambulance',
-      'This is some text that describes this product. It should be rather long to see how longer test is displayed. ' +
-      'The text should also be auto wrapped.', ['Option 1', 'Option 2', 'Option 3']);
-    this.availableProducts.push(p1);
-    this.availableProducts.push(p2);
-
-    this.selectedProduct = this.availableProducts[0];
-
-    this.data.getData().then(data => {
-      console.log('set data');
-      this.gridData = data.data;
-      this.columnDefs = data.headers.filter(header => header != "").map(header => [{headerName: header, field: header}][0]);
+    this.configuration.getConfig('products').then((data: Array<string>) => {
+      data.forEach(product => this.availableProducts.push(new Product(product['name'], product['icon'], product['text'])));
+      this.changeProduct(this.availableProducts[0]);
     });
   }
 
-  changeProduct = function(product: Product) {
+  changeProduct(product: Product): void {
     this.selectedProduct = product;
-  };
+
+    if (!this.selectedProduct.gridData || !this.selectedProduct.columnDefs) {
+      this.data.getData(product.name).then(data => {
+        console.log('set data');
+        this.selectedProduct.gridData = data.data;
+        this.selectedProduct.columnDefs = data.headers.filter(header => header !== '')
+          .map(header => [{headerName: header, field: header}][0]);
+      });
+    }
+  }
 }
