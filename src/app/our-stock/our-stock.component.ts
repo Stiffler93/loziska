@@ -12,7 +12,7 @@ import {AgGridColumn} from 'ag-grid-angular';
 })
 export class OurStockComponent implements OnInit {
 
-  @ViewChild('#dataTable') ag_grid;
+  @ViewChild('#filter') filterInput;
 
   availableProducts: Product[] = [];
   selectedProduct: Product = new Product('', '', '');
@@ -26,7 +26,7 @@ export class OurStockComponent implements OnInit {
       this.gridOptions.columnApi.autoSizeAllColumns();
       // this.gridOptions.api.refreshView();
     }
-  }
+  };
 
   constructor(private data: DataService, private configuration: ConfigurationService) {
   }
@@ -49,5 +49,10 @@ export class OurStockComponent implements OnInit {
           .map(header => [{headerName: header, field: header}][0]);
       });
     }
+  }
+
+  public filter(): void {
+    // console.log('Filter: ' + this.filterInput.value);
+    this.gridOptions.api.setQuickFilter(this.filterInput.value); // not working, value cannot be read
   }
 }
