@@ -11,6 +11,11 @@ export class OurStockComponent implements OnInit {
 
   availableProducts: Product[] = [];
   selectedProduct: Product = new Product('', '', '');
+  searchBar: object = {
+    filterValue: string = '',
+    focused: Boolean = false,
+    open: Boolean = false
+  };
 
   fastFilterClasses = {
     openSearchbar: false
@@ -50,22 +55,19 @@ export class OurStockComponent implements OnInit {
   }
 
   public filter(value: string): void {
-    this.gridOptions.api.setQuickFilter(value);
+    if(value === '') {
+      this.filterClasses.visibleInput = false;
+      this.fastFilterClasses.openSearchbar = false;
+    }
+    this.filterValue = value;
+    this.gridOptions.api.setQuickFilter(this.filterValue);
   }
 
-  public openCloseSearchField(event: string, value: string, element: ElementRef) {
-    console.log(event + ', ' + value);
-    console.log(element);
+  public openCloseSearchField(event: string, element: ElementRef) {
     if (event === 'mouseenter') {
       this.filterClasses.visibleInput = true;
       this.fastFilterClasses.openSearchbar = true;
-      console.log('add classes');
-    } else if (event === 'focus') {
-      this.filterClasses.visibleInput = true;
-      this.fastFilterClasses.openSearchbar = true;
-      console.log('add classes');
-    } else if (event === 'mouseleave' && value === '') {
-      console.log('remove classes');
+    } else if (event === 'mouseleave' && this.filterValue === '') {
       this.filterClasses.visibleInput = false;
       this.fastFilterClasses.openSearchbar = false;
     }
