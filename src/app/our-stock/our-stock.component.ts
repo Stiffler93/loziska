@@ -1,30 +1,28 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Product} from './model/Product';
 import {DataService} from '../services/data.service';
 import {ConfigurationService} from '../services/configuration.service';
 import {GridOptions} from 'ag-grid-community';
-import {AgGridColumn} from 'ag-grid-angular';
 
 @Component({
-  selector: 'app-our-stock',
-  templateUrl: './our-stock.component.html',
-  styleUrls: ['./our-stock.component.scss']
+  selector: 'app-our-stock', templateUrl: './our-stock.component.html', styleUrls: ['./our-stock.component.scss']
 })
 export class OurStockComponent implements OnInit {
-
-  @ViewChild('#filter') filterInput;
 
   availableProducts: Product[] = [];
   selectedProduct: Product = new Product('', '', '');
 
+  fastFilterClasses = {
+    openSearchbar: false
+  };
+  filterClasses = {
+    visibleInput: false
+  };
+
   public gridOptions: GridOptions = {
-    enableColResize: true,
-    enableSorting: true,
-    onModelUpdated: () => {
+    enableColResize: true, enableSorting: true, onModelUpdated: () => {
       console.log('grid model updated');
-      // this.gridOptions.api.sizeColumnsToFit();
       this.gridOptions.columnApi.autoSizeAllColumns();
-      // this.gridOptions.api.refreshView();
     }
   };
 
@@ -51,8 +49,25 @@ export class OurStockComponent implements OnInit {
     }
   }
 
-  public filter(): void {
-    // console.log('Filter: ' + this.filterInput.value);
-    this.gridOptions.api.setQuickFilter(this.filterInput.value); // not working, value cannot be read
+  public filter(value: string): void {
+    this.gridOptions.api.setQuickFilter(value);
+  }
+
+  public openCloseSearchField(event: string, value: string, element: ElementRef) {
+    console.log(event + ', ' + value);
+    console.log(element);
+    if (event === 'mouseenter') {
+      this.filterClasses.visibleInput = true;
+      this.fastFilterClasses.openSearchbar = true;
+      console.log('add classes');
+    } else if (event === 'focus') {
+      this.filterClasses.visibleInput = true;
+      this.fastFilterClasses.openSearchbar = true;
+      console.log('add classes');
+    } else if (event === 'mouseleave' && value === '') {
+      console.log('remove classes');
+      this.filterClasses.visibleInput = false;
+      this.fastFilterClasses.openSearchbar = false;
+    }
   }
 }

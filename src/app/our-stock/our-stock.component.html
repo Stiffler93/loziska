@@ -8,9 +8,13 @@
           <span class="caret"></span>
       </button>
 
-      <div id="fastFilter">
+      <div id="fastFilter" [ngClass]="fastFilterClasses"
+           (mouseenter)="openCloseSearchField('mouseenter', $event.srcElement.value, $event.srcElement)">
         <input id="filter" class="form-control" type="search" placeholder="Search Product" aria-label="Search"
-               (input)="filter()" />
+               [ngClass]="filterClasses"
+               (input)="filter($event.srcElement.value)"
+               (focus)="openCloseSearchField('focus', $event.srcElement.value, $event.srcElement)"
+               (mouseleave)="openCloseSearchField('mouseleave', $event.srcElement.value, $event.srcElement)" />
         <i class="fa fa-search"></i>
       </div>
 
