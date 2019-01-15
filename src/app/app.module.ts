@@ -13,10 +13,11 @@ import {OurStoreComponent} from './our-store/our-store.component';
 import {PapaParseModule} from 'ngx-papaparse';
 import {HttpClientModule} from '@angular/common/http';
 import {AgGridModule} from 'ag-grid-angular';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, NavigationBarComponent, WelcomePageComponent, OurStockComponent, OurStoreComponent],
-  imports: [BrowserModule, AppRoutingModule, AngularFontAwesomeModule, CollapseModule.forRoot(), BsDropdownModule.forRoot(),
+  imports: [BrowserModule, FormsModule, AppRoutingModule, AngularFontAwesomeModule, CollapseModule.forRoot(), BsDropdownModule.forRoot(),
     PapaParseModule, HttpClientModule, AgGridModule.withComponents([])],
   providers: [],
   bootstrap: [AppComponent]
