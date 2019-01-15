@@ -1,7 +1,8 @@
+@import "~src/app/loziska-app-theme";
 
 #ourStoreSection {
   display: flex;
-  background-color: rgba(244, 95, 66, 0.1);
+  background-color: $background-color;
   flex-direction: column;
   justify-content:center;
   width: 100%;
@@ -57,7 +58,7 @@
   margin: 0 auto;
   height: 500px;
   width: 100%;
-  background-color: grey;
+  background-color: greenyellow;
 }
 
 #dummy {

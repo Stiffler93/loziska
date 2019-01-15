@@ -1,3 +1,4 @@
+@import "~src/app/loziska-app-theme";
 
 #container {
   display: flex;
@@ -8,7 +9,7 @@
 
 #ourStockSection {
   display: flex;
-  background-color: rgba(244, 95, 66, 0.1);
+  background-color: $background-color;
   flex-direction: column;
   justify-content: center;
   width: 100vw;
@@ -27,6 +28,10 @@ button:focus {
   outline: 0;
 }
 
+input:active {
+  outline: 0;
+}
+
 #productDropdown {
   display: flex;
   width: 90%;
@@ -34,7 +39,7 @@ button:focus {
   align-content: center;
 
   #button-basic {
-    background-color: #ff8080;
+    background-color: $secondary;
     white-space: nowrap;
     overflow: hidden;
 
@@ -59,6 +64,7 @@ button:focus {
     width: 3em;
     min-width: 3em;
     max-width: 14em;
+    background-color: $primary-light;
 
     transition-timing-function: linear;
     -webkit-transition: all 0.6s;
@@ -76,6 +82,7 @@ button:focus {
       display: none;
       margin: 0 0.5em;
       height: 90%;
+      outline: none;
     }
   }
 
@@ -125,24 +132,6 @@ button:focus {
         margin: 0 0 0 0.7em;
         text-align: justify;
       }
-    }
-  }
-}
-
-.filterOptions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  margin: 0.4em;
-
-  .option {
-    display: flex;
-    margin: 0.5em 0.5em 0;
-
-    span {
-      display: inline-block;
-      margin: 0.1em 0.4em;
-      white-space: nowrap;
     }
   }
 }
@@ -218,8 +207,8 @@ button:focus {
   }
 
   .active {
-    background-color: #ff8080;
-    border-color: #ff8080;
+    background-color: $secondary;
+    border-color: $secondary;
   }
 }
 

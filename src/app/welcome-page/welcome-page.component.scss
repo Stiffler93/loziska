@@ -1,8 +1,10 @@
+@import "~src/app/loziska-app-theme";
 
 #welcomeSection {
   display: flex;
   height: 100vh;
-  background-color: rgba(244, 95, 66, 0.1);
+  background-color: $background-color;
+  background-image: url("~src/assets/images/bearing1.jpg");
   flex-direction: column;
   justify-content:center;
 }
@@ -11,7 +13,7 @@
   margin: 0;
   padding: 0;
   text-align: center;
-  color: rgba(255, 0, 0, 0.5);
+  color: $text-on-background;
   font-size: 6em;
 }
 
@@ -19,14 +21,15 @@
   margin: 0;
   padding: 0;
   text-align: center;
-  color: rgba(255, 0, 0, 0.5);
+  color: $text-on-background;
   font-size: 2em;
 }
 
 #welcomeSection .productSearch {
   display: flex;
   flex-direction: column;
-  background-color: #ff8080;
+  //background-color: $primary-light;
+  color: $text-on-primary;
   width: 80%;
   max-width: 25em;
   margin: 0.5em auto;
@@ -59,10 +62,11 @@
   text-align: justify;
   margin: 1.5em;
   max-width: 25em;
+  color: $text-on-primary;
 }
 
 #welcomeSection #welcomeText h1 {
-  color: black;
+  color: $text-on-primary;
   font-size: 2em;
   margin: 0.5em;
 }
@@ -83,14 +87,14 @@
 
   #welcomeSection .productSearch {
     /* display: inline-block; */
-    background-color: rgba(255, 0, 0, 0);
+    //background-color: rgba(255, 0, 0, 0);
     margin: 1em;
   }
 
   #productSearchBackground {
     display: flex;
     justify-content: center;
-    background-color: rgba(255, 0, 0, 0.5);
+    background-color: rgba($primary-light, 0.5);
   }
 
 }
