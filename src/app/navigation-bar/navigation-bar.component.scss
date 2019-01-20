@@ -15,6 +15,30 @@ nav {
 
 .form-control {
   flex: 1;
+
+  &:focus {
+    outline: none !important;
+    border:3px solid $secondary;
+    box-shadow: 0 0 10px $secondary-light;
+  }
+}
+
+.btn-success {
+  color: #fff;
+  background-color: $secondary;
+  border-color: $secondary;
+
+  &:hover, &:focus, &:active, &.active {
+    border-color: $secondary-dark !important;
+    background-color: $secondary-dark !important;
+
+  }
+
+  &:active, &.active, &:visited, &:focus {
+    -webkit-box-shadow:  0 0 0 2px rgba(mix($secondary-dark, darken($secondary-dark, .4), 15%), .5) !important;
+    -moz-box-shadow: 0 0 0 2px rgba(mix($secondary-dark, darken($secondary-dark, .4), 15%), .5) !important;
+    box-shadow: 0 0 0 2px rgba(mix($secondary-dark, darken($secondary-dark, .4), 15%), .5) !important;
+  }
 }
 
 #menuItems {
