@@ -12,6 +12,23 @@
     },
     {
       "name": "Loziska",
+      "subgroups": [
+        {
+          "name": "SKF, NSK, FAG",
+          "icon": "fa fa-universal-access",
+          "text": "This is some text that describes this product. It should be rather long to see how longer test is displayed. The text should also be auto wrapped."
+        },
+        {
+          "name": "ZKL, ZVL",
+          "icon": "fa fa-universal-access",
+          "text": "This is some text that describes this product. It should be rather long to see how longer test is displayed. The text should also be auto wrapped."
+        },
+        {
+          "name": "Domeckova",
+          "icon": "fa fa-universal-access",
+          "text": "This is some text that describes this product. It should be rather long to see how longer test is displayed. The text should also be auto wrapped."
+        }
+      ],
       "icon": "fa fa-universal-access",
       "text": "This is some text that describes this product. It should be rather long to see how longer test is displayed. The text should also be auto wrapped."
     },
