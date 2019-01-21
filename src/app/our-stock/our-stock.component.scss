@@ -1,5 +1,11 @@
 @import "~src/app/loziska-app-theme";
 
+.form-control:focus {
+  outline: none !important;
+  border: 3px solid $secondary;
+  box-shadow: 0 0 10px $secondary-light;
+}
+
 #container {
   display: flex;
   flex-direction: column;
@@ -88,6 +94,10 @@ input:active {
 
   #sideMenu {
     display: none;
+
+    button {
+      cursor: pointer;
+    }
   }
 }
 

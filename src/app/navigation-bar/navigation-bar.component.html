@@ -1,18 +1,18 @@
 <div id="navigationBarDiv">
   <nav class="navbar navbar-expand-md navbar-light fixed-top">
-    <a class="navbar-brand" href="#"><img class="navbar-logo" src="assets/icons/icon.png"/></a>
+    <a class="navbar-brand" routerLink="/" (click)="isCollapsed = true" [class.active-page]="'/' === router.url"><img class="navbar-logo" src="assets/icons/icon.png"/></a>
 
-    <button class="navbar-toggler" type="button" aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed">
+    <button class="custom-toggler navbar-toggler" [class.open]="!isCollapsed" type="button" aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse navbar-nav" id="navbarSupportedContent" [collapse]="isCollapsed">
       <div id="menuItems">
         <li class="nav-item nav-link">
-          <a routerLink="/our-store" routerLinkActive="active">Our Store</a>
+          <a routerLink="/our-store" (click)="isCollapsed = true" routerLinkActive="active" [class.active-page]="'/our-store' === router.url">Our Store</a>
         </li>
         <li class="nav-item nav-link">
-          <a routerLink="/our-stock" routerLinkActive="active">Our Stock</a>
+          <a routerLink="/our-stock" (click)="isCollapsed = true" routerLinkActive="active" [class.active-page]="'/our-stock' === router.url">Our Stock</a>
         </li>
       </div>
 

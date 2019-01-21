@@ -10,34 +10,46 @@
   background-size: cover;
   flex-direction: column;
   justify-content:center;
-}
 
-#welcomeSection h1 {
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  color: $text-on-background;
-  font-size: 6em;
-  text-shadow: -1px 0 $text-on-primary, 0 1px $text-on-primary, 1px 0 $text-on-primary, 0 -1px $text-on-primary;
-}
+  h1, h3 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: $text-on-background;
+    text-shadow: -1px 0 $text-on-primary, 0 1px $text-on-primary, 1px 0 $text-on-primary, 0 -1px $text-on-primary;
+  }
 
-#welcomeSection h3 {
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  color: $text-on-background;
-  font-size: 2em;
-  text-shadow: -1px 0 $text-on-primary, 0 1px $text-on-primary, 1px 0 $text-on-primary, 0 -1px $text-on-primary;
-}
+  h1 {
+    font-size: 6em;
+  }
 
-#welcomeSection .productSearch {
-  display: flex;
-  flex-direction: column;
-  //background-color: $primary-light;
-  color: $text-on-primary;
-  width: 80%;
-  max-width: 25em;
-  margin: 0.5em auto;
+  h3 {
+    font-size: 2em;
+  }
+
+  .productSearch {
+    display: flex;
+    flex-direction: column;
+    color: $text-on-primary;
+    width: 80%;
+    max-width: 25em;
+    margin: 0.5em auto;
+  }
+
+  #welcomeText {
+    display: none;
+    flex-basis: 30%;
+    text-align: justify;
+    margin: 1.5em;
+    max-width: 25em;
+    color: $text-on-primary;
+
+    h1 {
+      color: $text-on-primary;
+      font-size: 2em;
+      margin: 0.5em;
+    }
+  }
 }
 
 .form-control {
@@ -70,34 +82,19 @@
 
 #additionalInfo {
   display: none;
-}
 
-#additionalInfo > p {
-  font-style: italic;
-}
+  p {
+    font-style: italic;
+  }
 
-#additionalInfo > div {
-  text-align: left;
-  margin: 0.1em 0.1em 0.1em 2em;
-}
+  div {
+    text-align: left;
+    margin: 0.1em 0.1em 0.1em 2em;
+  }
 
-#additionalInfo .fa {
-  margin-right: 0.4em;
-}
-
-#welcomeSection #welcomeText {
-  display: none;
-  flex-basis: 30%;
-  text-align: justify;
-  margin: 1.5em;
-  max-width: 25em;
-  color: $text-on-primary;
-}
-
-#welcomeSection #welcomeText h1 {
-  color: $text-on-primary;
-  font-size: 2em;
-  margin: 0.5em;
+  .fa {
+    margin-right: 0.4em;
+  }
 }
 
 /* Small devices (tablets, 768px and up) */
@@ -108,35 +105,40 @@
     text-align: center;
     margin: 0.5em;
     font-weight: bold;
-  }
 
-  #welcomeSection .productSearch > .form-inline {
-    max-width: 30em;
+    hr {
+      border-color: $secondary;
+    }
   }
 
   #welcomeSection .productSearch {
-    /* display: inline-block; */
-    //background-color: rgba(255, 0, 0, 0);
     margin: 1em;
+
+    .form-inline {
+      max-width: 30em;
+    }
   }
 
   #productSearchBackground {
     display: flex;
     justify-content: center;
-    background-color: rgba($primary-light, 0.5);
+    background-color: rgba($primary-light, 0.3);
   }
 
 }
 
 @media (min-width: 1200px) {
 
-  #welcomeSection .productSearch {
-    justify-content: center;
-    margin: 1.5em;
-  }
+  #welcomeSection {
 
-  #welcomeSection #welcomeText {
-    display: inline-block;
+    .productSearch {
+      justify-content: center;
+      margin: 1.5em;
+    }
+
+    #welcomeText {
+      display: inline-block;
+    }
   }
 
 }

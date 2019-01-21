@@ -13,14 +13,38 @@ nav {
   color: $text-on-primary;
 }
 
+.active-page {
+  color: $secondary !important;
+  text-shadow: -1px 0 $secondary-light, 0 1px $secondary-light, 1px 0 $secondary-light, 0 -1px $secondary-light;
+
+}
+
 .form-control {
   flex: 1;
 
   &:focus {
     outline: none !important;
-    border:3px solid $secondary;
+    border: 3px solid $secondary;
     box-shadow: 0 0 10px $secondary-light;
   }
+}
+
+.custom-toggler.navbar-toggler {
+  border-color: $secondary !important;
+
+  &:focus {
+    outline: none !important;
+  }
+
+  &.open {
+    outline: none !important;
+    border: 3px solid $secondary;
+    box-shadow: 0 0 10px $secondary-light;
+  }
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#e99a52' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
 .btn-success {
@@ -35,7 +59,7 @@ nav {
   }
 
   &:active, &.active, &:visited, &:focus {
-    -webkit-box-shadow:  0 0 0 2px rgba(mix($secondary-dark, darken($secondary-dark, .4), 15%), .5) !important;
+    -webkit-box-shadow: 0 0 0 2px rgba(mix($secondary-dark, darken($secondary-dark, .4), 15%), .5) !important;
     -moz-box-shadow: 0 0 0 2px rgba(mix($secondary-dark, darken($secondary-dark, .4), 15%), .5) !important;
     box-shadow: 0 0 0 2px rgba(mix($secondary-dark, darken($secondary-dark, .4), 15%), .5) !important;
   }
@@ -59,9 +83,12 @@ nav {
 #menuItems li {
   text-align: center;
   flex-basis: 45%;
-  border-style: solid;
-  boder-width: 1px;
+  border: 1px solid $text-on-primary;
   margin: 0.3em 0;
+
+  a:hover {
+    color: $secondary;
+  }
 }
 
 #navbarSupportedContent > .form-inline {
@@ -80,24 +107,27 @@ nav {
   width: 100%;
   margin-top: 0.5em;
   font-size: 1.2em;
-}
 
-#navbarSupportedContent #contactInformation > div {
-  display: inline-flex;
-  flex-basis: 50%;
-  flex-direction: column;
-  text-align: center;
-  padding: 1.5em 1em 0.5em 1em;
-}
+  & > div {
+    display: inline-flex;
+    flex-basis: 50%;
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5em 1em 0.5em 1em;
 
-#navbarSupportedContent #contactInformation > div > i  {
-  font-size: 2em;
+    & > i {
+      font-size: 2em;
+
+      &:hover {
+        color: $secondary;
+      }
+    }
+  }
 }
 
 .form-control {
   flex: 1;
 }
-
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
@@ -117,7 +147,9 @@ nav {
   }
 
   #navbarSupportedContent > .form-inline {
-    display: none;
+    display: flex;
+    max-width: 12em;
+    justify-content: flex-end;
   }
 
   .nav-item {
@@ -130,7 +162,7 @@ nav {
   }
 
   #navbarSupportedContent #contactInformation > div {
-    display: inline-flex;
+    display: none;
     flex-direction: row;
     padding: 0;
     justify-content: center;
@@ -146,17 +178,19 @@ nav {
     vertical-align: middle;
     margin: 0 .3em;
   }
-
-  #navbarSupportedContent #contactInformation > div:nth-of-type(2) {
-    display: none;
-  }
 }
 
 @media (min-width: 992px) {
   #navbarSupportedContent > .form-inline {
-    display: flex;
     max-width: 20em;
-    justify-content: flex-end;
+  }
+
+  #navbarSupportedContent #contactInformation > div {
+    display: inline-flex;
+  }
+
+  #navbarSupportedContent #contactInformation > div:nth-of-type(2) {
+    display: none;
   }
 }
 
