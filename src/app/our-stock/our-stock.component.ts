@@ -10,7 +10,7 @@ import {GridOptions} from 'ag-grid-community';
 export class OurStockComponent implements OnInit {
 
   availableProducts: Product[] = [];
-  selectedProduct: Product = new Product('', '', '');
+  selectedProduct: Product = new Product('', '', '', '');
   searchBar = {
     value: '',
     focused: false,
@@ -29,22 +29,51 @@ export class OurStockComponent implements OnInit {
 
   ngOnInit() {
     this.configuration.getConfig('products').then((data: Array<string>) => {
-      data.forEach(product => this.availableProducts.push(new Product(product['name'], product['icon'], product['text'])));
+      this.parseProducts(data, this.availableProducts);
       this.changeProduct(this.availableProducts[0]);
     });
   }
 
-  changeProduct(product: Product): void {
+  private parseProducts(data: Array<string>, target: Product[]): void {
+    data.forEach(product => {
+      const p: Product = new Product(product['name'], product['file'], product['icon'], product['text']);
+      if (product['parameters']) {
+        this.parseParameters(product['parameters'], p.parameters);
+      }
+      if (product['products']) {
+        if (!p.subproducts) {
+          p.subproducts = [];
+        }
+        this.parseProducts(product['products'], p.subproducts);
+      }
+      target.push(p);
+    });
+  }
+
+  private parseParameters(data: Array<string>, target: string[]): void {
+    data.forEach(parameter => {
+      target.push(parameter);
+    });
+  }
+
+  public changeProduct(product: Product): void {
+    console.log({'new Product:': product});
     this.selectedProduct = product;
 
     if (!this.selectedProduct.gridData || !this.selectedProduct.columnDefs) {
-      this.data.getData(product.name).then(data => {
-        console.log('set data');
+      this.data.getData(product).then(data => {
         this.selectedProduct.gridData = data.data;
         this.selectedProduct.columnDefs = data.headers.filter(header => header !== '')
           .map(header => [{headerName: header, field: header}][0]);
       });
     }
+  }
+
+  public isCollapsed(product: Product): Boolean {
+    if (product.subproducts && product.subproducts.indexOf(this.selectedProduct) !== -1) {
+      return false;
+    }
+    return this.selectedProduct.name !== product.name;
   }
 
   public filter(): void {

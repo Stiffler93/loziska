@@ -43,13 +43,21 @@
                 [class.active]="selectedProduct.name === product.name" (click)="changeProduct(product)">
           <i class="{{product.icon}} mr-3"></i>
           <span>{{product.name}}</span>
+
+          <div *ngIf="product.subproducts" class="collapse mt-3" [collapse]="isCollapsed(product)">
+            <button *ngFor="let subproduct of product.subproducts" class="list-group-item list-group-item-action"
+                    [class.active]="selectedProduct.name === subproduct.name" (click)="changeProduct(subproduct); $event.stopPropagation()">
+              <i class="{{subproduct.icon}} mr-3"></i>
+              <span>{{subproduct.name}}</span>
+            </button>
+          </div>
+
         </button>
         <hr/>
         <span>{{selectedProduct.text}}</span>
       </div>
 
     </div>
-
   </div>
 
   <ag-grid-angular

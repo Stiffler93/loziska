@@ -2,43 +2,50 @@
   "products": [
     {
       "name": "Gufera",
+      "file": "Gufera.csv",
       "icon": "fa fa-universal-access",
       "text": "This is some text that describes this product. It should be rather long to see how longer test is displayed. The text should also be auto wrapped."
     },
     {
       "name": "Klinove_remeny",
+      "file": "Klinove_remeny.csv",
       "icon": "fa fa-ambulance",
       "text": "This is some text that describes this product. It should be rather long to see how longer test is displayed. The text should also be auto wrapped."
     },
     {
       "name": "Loziska",
-      "subgroups": [
+      "icon": "fa fa-universal-access",
+      "text": "This is some text that describes this product. It should be rather long to see how longer test is displayed. The text should also be auto wrapped.",
+      "products": [
         {
           "name": "SKF, NSK, FAG",
+          "file": "SKF_FAG_NSK.csv",
           "icon": "fa fa-universal-access",
           "text": "This is some text that describes this product. It should be rather long to see how longer test is displayed. The text should also be auto wrapped."
         },
         {
-          "name": "ZKL, ZVL",
+          "name": "ZKL, ZKV",
+          "file": "ZKL_ZKV.csv",
           "icon": "fa fa-universal-access",
           "text": "This is some text that describes this product. It should be rather long to see how longer test is displayed. The text should also be auto wrapped."
         },
         {
           "name": "Domeckova",
+          "file": "Domeckova.csv",
           "icon": "fa fa-universal-access",
           "text": "This is some text that describes this product. It should be rather long to see how longer test is displayed. The text should also be auto wrapped."
         }
-      ],
-      "icon": "fa fa-universal-access",
-      "text": "This is some text that describes this product. It should be rather long to see how longer test is displayed. The text should also be auto wrapped."
+      ]
     },
     {
       "name": "O-krouzky",
+      "file": "O-krouzky.csv",
       "icon": "fa fa-ambulance",
       "text": "This is some text that describes this product. It should be rather long to see how longer test is displayed. The text should also be auto wrapped."
     },
     {
       "name": "Segerovy",
+      "file": "Segerovy.csv",
       "icon": "fa fa-universal-access",
       "text": "This is some text that describes this product. It should be rather long to see how longer test is displayed. The text should also be auto wrapped."
     }

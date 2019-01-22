@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Papa} from 'ngx-papaparse';
 import {HttpClient} from '@angular/common/http';
 import {TableData} from './model/TableData';
+import {Product} from '../our-stock/model/Product';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +15,20 @@ export class DataService {
   constructor(private papa: Papa, private http: HttpClient) {
   }
 
-  private loadData(product: string): Promise<TableData> {
-    console.log('Load ' + product);
-    return this.http.get('assets/data/' + product + '.csv', {responseType: 'text'})
+  private loadData(product: Product): Promise<TableData> {
+    console.log('Load ' + product.name);
+
+    if (!product.file && product.subproducts) {
+      const promises: Array<Promise<TableData>> = [];
+      product.subproducts.forEach(subproduct => promises.push(new Promise<TableData>(resolve => this.loadData(subproduct))));
+
+    } else if (!product.file) {
+      return new Promise<TableData>(resolve => {
+        return new TableData([''], [{}]);
+      });
+    }
+
+    return this.http.get('assets/data/' + product.file, {responseType: 'text'})
       .toPromise()
       .then(stream => {
         this.parseData(stream);
@@ -28,7 +40,6 @@ export class DataService {
     this.papa.parse(stream, {
       header: true,
       complete: (result) => {
-        console.log('Parsed: ', result);
         this.data = result.data;
         this.headers = result.meta.fields;
       }, error: error1 => {
@@ -38,7 +49,7 @@ export class DataService {
     });
   }
 
-  public getData(product: string): Promise<TableData> {
+  public getData(product: Product): Promise<TableData> {
     return new Promise<TableData>(resolve => {
       resolve(this.loadData(product));
     });
