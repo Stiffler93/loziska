@@ -20,8 +20,14 @@ export class DataService {
 
     if (!product.file && product.subproducts) {
       const promises: Array<Promise<TableData>> = [];
-      product.subproducts.forEach(subproduct => promises.push(new Promise<TableData>(resolve => this.loadData(subproduct))));
-
+      product.subproducts.forEach(subproduct => promises.push(this.loadData(subproduct)));
+      return Promise.all(promises).then(tableDatas => {
+        let combinedTableData: object[] = [];
+        tableDatas.forEach(tableData => {
+          combinedTableData = combinedTableData.concat(tableData.data);
+        });
+        return new TableData(tableDatas[0].headers, combinedTableData);
+      });
     } else if (!product.file) {
       return new Promise<TableData>(resolve => {
         return new TableData([''], [{}]);
