@@ -1,0 +1,48 @@
+{
+  "nav": {
+    "our-store": "Unser Geschäft",
+    "our-stock": "Unser Lager"
+  },
+  "welcome": {
+    "supplier-head": "Ihr Anbieter für Service Zubehör",
+    "headline": "Herzlich Willkommen!",
+    "introduction": "Naše společnost Vám nabízí jen ty nejkvalitnější služby v oboru. Neváhejte a využijte našich kvalitních služeb, moderních metod. Náš profesionální personál je vám vždy plně k dispozici. Naší předností je neustálé zkvalitňování a vylepšování námi nabízených služeb. Důkazem je stále vzrůstající počet spokojených zákazníků."
+  },
+  "store": {
+    "opening-times": "Wir haben geöffnet: Mo-Fr 7:00-16:00",
+    "headline": "Herzlich Willkommen!",
+    "introduction": "Naše společnost Vám nabízí jen ty nejkvalitnější služby v oboru. Neváhejte a využijte našich kvalitních služeb, moderních metod. Náš profesionální personál je vám vždy plně k dispozici. Naší předností je neustálé zkvalitňování a vylepšování námi nabízených služeb. Důkazem je stále vzrůstající počet spokojených zákazníků.",
+    "location-pretext": "Wo Sie uns finden:"
+  },
+  "stock": {
+    "products": {
+      "radial-shaft-seals": "Wellendichtringe",
+      "radial-shaft-seals-description": " Description",
+      "fan-belts": "Keilriemen",
+      "fan-belts-description": "Keilriemen Description",
+      "ball-bearings": "Kugellager",
+      "ball-bearings-description": "Kugellager Description",
+      "o-rings": "O-Ringe",
+      "o-rings-description": "O-Ringe Description",
+      "Scheiß": "Scheiß",
+      "Scheiß-description": "Scheiß Description",
+      "assortment": "Sortiment",
+      "assortment-description": "Sortiment Description"
+    },
+    "table-headlines": {
+      "description": "Beschreibung",
+      "in-stock": "Vorrat",
+      "net-price": "Nettopreis",
+      "gross-price": "Bruttopreis",
+      "abbreviation": "Abkürzung"
+    }
+
+  },
+  "general": {
+    "phone-number": "0664/75050088",
+    "email-address": "stefan.leopold@hotmail.com",
+    "address": "2073 Schrattenthal, Waitzendorf 29",
+    "search-product": "Search Product",
+    "search": "Search"
+  }
+}
