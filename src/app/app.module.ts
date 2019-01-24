@@ -14,9 +14,10 @@ import {PapaParseModule} from 'ngx-papaparse';
 import {HttpClientModule} from '@angular/common/http';
 import {AgGridModule} from 'ag-grid-angular';
 import {FormsModule} from '@angular/forms';
+import { TranslationPipe } from './services/pipes/translation.pipe';
 
 @NgModule({
-  declarations: [AppComponent, NavigationBarComponent, WelcomePageComponent, OurStockComponent, OurStoreComponent],
+  declarations: [AppComponent, NavigationBarComponent, WelcomePageComponent, OurStockComponent, OurStoreComponent, TranslationPipe],
   imports: [BrowserModule, FormsModule, AppRoutingModule, AngularFontAwesomeModule, CollapseModule.forRoot(), BsDropdownModule.forRoot(),
     PapaParseModule, HttpClientModule, AgGridModule.withComponents([])],
   providers: [],

@@ -8,33 +8,40 @@ export class ConfigurationService {
 
   configuration: object = {};
   loaded = false;
+  promise: Promise<object> = undefined;
 
   constructor(private http: HttpClient) {
   }
 
-  private loadConfig(key: string): Promise<object> {
+  public loadConfig(): Promise<object> {
+    console.log('loadConfig!');
     return this.http.get('assets/configuration.json', {responseType: 'json'})
       .toPromise()
       .then(data => {
         console.log('ConfigurationService:');
         this.configuration = data;
         this.loaded = true;
+        this.promise = undefined;
 
-        return this.configuration[key];
+        return this.configuration;
       });
   }
 
   public getConfig(key: string): Promise<object> {
-    return new Promise<object>(resolve => {
-      if (this.loaded) {
-        if (this.configuration[key]) {
-          resolve(this.configuration[key]);
-        } else {
-          resolve({'default': 'no value'});
-        }
+    if (this.loaded) {
+      if (this.configuration[key]) {
+        return Promise.resolve(this.configuration[key]);
       } else {
-        resolve(this.loadConfig(key));
+        return Promise.resolve({'default': 'no value'});
       }
+    }
+
+    if (!this.promise) {
+      this.promise = this.loadConfig();
+    }
+
+    return this.promise.then(configuration => {
+      return configuration[key];
     });
   }
 }

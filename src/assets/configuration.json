@@ -1,4 +1,18 @@
 {
+  "languages": [
+    {
+      "name": "English",
+      "short": "en"
+    },
+    {
+      "name": "Deutsch",
+      "short": "de"
+    },
+    {
+      "name": "Czech",
+      "short": "cz"
+    }
+  ],
   "products": [
     {
       "name": "Gufera",
