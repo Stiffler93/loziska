@@ -18,22 +18,21 @@ export class TranslationService {
 
   private load(): Promise<Translation[]> {
     this.promise = this.configuration.getConfig('languages').then((config: object[]) => {
-      const loadTranslations: Promise<void>[] = config.map(language => new Promise<void>(() => {
-        return this.http.get('assets/translations/' + language['short'] + '.json', {responseType: 'json'}).toPromise()
+      const loadTranslations: Promise<Translation>[] = config.map(language => new Promise<Translation>((resolve) => {
+        resolve(this.http.get('assets/translations/' + language['short'] + '.json', {responseType: 'json'}).toPromise()
           .then(result => {
             const trans: Translation = new Translation(language['name'], language['short']);
             trans.parse(result);
             this.translations[language['short']] = trans;
             console.log('translations for ' + language['short'] + ' loaded');
-          });
+            return trans;
+          }));
       }));
 
-      this.promise = Promise.all(loadTranslations).then(() => {
+      return Promise.all(loadTranslations).then(() => {
         this.loaded = true;
         return this.translations;
       });
-
-      return this.promise;
     });
 
     return this.promise;
@@ -42,17 +41,30 @@ export class TranslationService {
   public translate(value: string): Promise<string> {
 
     if (this.loaded) {
-      // return Promise.resolve(this.translations[this.activeLanguage])
-      return Promise.resolve('Translation');
+      let content: object = this.translations[this.activeLanguage]['content'];
+      const path: string[] = value.split('.');
+
+      for (let i = 0; i < path.length - 1; i++) {
+        content = content[path[i]];
+      }
+
+      return Promise.resolve(content[path[path['length'] - 1]]);
     }
-    //
+
     if (!this.promise) {
       this.promise = this.load();
     }
-    //
+
     return this.promise.then((translations: Translation[]) => {
       console.log('Resolve translate()');
-      return 'Translate';
+      let content: object = translations[this.activeLanguage]['content'];
+      const path: string[] = value.split('.');
+
+      for (let i = 0; i < path.length - 1; i++) {
+        content = content[path[i]];
+      }
+
+      return content[path[path['length'] - 1]];
     });
   }
 }
