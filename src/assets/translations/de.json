@@ -4,6 +4,8 @@
     "our-stock": "Unser Lager"
   },
   "welcome": {
+    "title": "Loziska",
+    "subtitle": "Vaclav Haruda",
     "supplier-head": "Ihr Anbieter für Service Zubehör",
     "headline": "Herzlich Willkommen!",
     "introduction": "Naše společnost Vám nabízí jen ty nejkvalitnější služby v oboru. Neváhejte a využijte našich kvalitních služeb, moderních metod. Náš profesionální personál je vám vždy plně k dispozici. Naší předností je neustálé zkvalitňování a vylepšování námi nabízených služeb. Důkazem je stále vzrůstající počet spokojených zákazníků."
@@ -22,6 +24,12 @@
       "fan-belts-description": "Keilriemen Description",
       "ball-bearings": "Kugellager",
       "ball-bearings-description": "Kugellager Description",
+      "ball-bearings-SKF-NSK-FAG": "SKF, NSK, FAG",
+      "ball-bearings-SKF-NSK-FAG-description": "SKF, NSK, FAG Description",
+      "ball-bearings-ZKL-ZKV": "ZKL, ZKV",
+      "ball-bearings-ZKL-ZKV-description": "ZKL, ZKV Description",
+      "ball-bearings-Domeckova": "Domeckova",
+      "ball-bearings-Domeckova-description": "Domeckova Description",
       "o-rings": "O-Ringe",
       "o-rings-description": "O-Ringe Description",
       "Scheiß": "Scheiß",
@@ -30,13 +38,12 @@
       "assortment-description": "Sortiment Description"
     },
     "table-headlines": {
-      "description": "Beschreibung",
-      "in-stock": "Vorrat",
-      "net-price": "Nettopreis",
-      "gross-price": "Bruttopreis",
-      "abbreviation": "Abkürzung"
+      "Popis": "Popis",
+      "Stav zásoby": "Stav zásoby",
+      "Cena bez DPH": "Cena bez DPH",
+      "Cena s DPH": "Cena s DPH",
+      "Zkratka": "Zkratka"
     }
-
   },
   "general": {
     "phone-number": "0664/75050088",

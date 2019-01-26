@@ -11,7 +11,6 @@ export class TranslationPipe implements PipeTransform {
   }
 
   transform(value: string): Promise<string> {
-    console.log('Translate: ' + value);
     return this.translation.translate(value);
   }
 }

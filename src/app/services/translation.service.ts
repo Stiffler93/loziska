@@ -48,7 +48,8 @@ export class TranslationService {
         content = content[path[i]];
       }
 
-      return Promise.resolve(content[path[path['length'] - 1]]);
+      const translation: string = content[path[path['length'] - 1]];
+      return (!translation || translation === '') ? Promise.resolve(value) : Promise.resolve(translation);
     }
 
     if (!this.promise) {
@@ -56,7 +57,6 @@ export class TranslationService {
     }
 
     return this.promise.then((translations: Translation[]) => {
-      console.log('Resolve translate()');
       let content: object = translations[this.activeLanguage]['content'];
       const path: string[] = value.split('.');
 
@@ -64,7 +64,8 @@ export class TranslationService {
         content = content[path[i]];
       }
 
-      return content[path[path['length'] - 1]];
+      const translation: string = content[path[path['length'] - 1]];
+      return (!translation || translation === '') ? value : translation;
     });
   }
 }

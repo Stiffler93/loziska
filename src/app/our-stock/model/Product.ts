@@ -1,7 +1,7 @@
 
 export class Product {
 
-  columnDefs: object[] = undefined;
+  columnDefs: object[] = [];
   gridData: object[] = undefined;
   subproducts: Product[] = undefined;
 

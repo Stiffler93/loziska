@@ -1,23 +1,19 @@
 <section id="ourStoreSection">
   <div id="openingTimes">
     <hr/>
-    <h2>We are opened: Po-Pa 7:00-16:00</h2>
+    <h2>{{"store.opening-times" | translation | async}}</h2>
     <hr/>
   </div>
 
   <div id="layout">
     <div id="welcomeText">
-      <h1>Vítáme Vás!</h1>
-      <p>
-      Naše společnost Vám nabízí jen ty nejkvalitnější služby v oboru. Neváhejte a využijte našich
-      kvalitních služeb, moderních metod. Náš profesionální personál je vám vždy plně k dispozici. Naší předností je
-      neustálé zkvalitňování a vylepšování námi nabízených služeb. Důkazem je stále vzrůstající počet spokojených
-      zákazníků.</p>
-      <p id="address">2073 Schrattenthal, Waitzendorf 29</p>
+      <h1>{{"store.headline" | translation | async}}</h1>
+      <p>{{"store.introduction" | translation | async}}</p>
+      <p id="address">{{"general.address" | translation | async}}</p>
     </div>
 
     <div id="googleMaps">
-      <h3>Where you find us:</h3>
+      <h3>{{"store.location-pretext" | translation | async}}</h3>
       <div id="map"></div>
     </div>
   </div>

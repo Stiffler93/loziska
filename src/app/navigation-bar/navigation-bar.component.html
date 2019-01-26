@@ -12,23 +12,23 @@
           <a routerLink="/our-store" (click)="isCollapsed = true" routerLinkActive="active" [class.active-page]="'/our-store' === router.url">{{"nav.our-store" | translation | async}}</a>
         </li>
         <li class="nav-item nav-link">
-          <a routerLink="/our-stock" (click)="isCollapsed = true" routerLinkActive="active" [class.active-page]="'/our-stock' === router.url">Our Stock</a>
+          <a routerLink="/our-stock" (click)="isCollapsed = true" routerLinkActive="active" [class.active-page]="'/our-stock' === router.url">{{"nav.our-store" | translation | async}}</a>
         </li>
       </div>
 
       <div id="contactInformation">
         <div>
           <i class="fa fa-phone"></i>
-          <span>0495/49q34t90</span>
+          <span>{{"general.phone-number" | translation | async}}</span>
         </div>
         <div>
           <i class="fa fa-at"></i>
-          <span>sdfoij@adsfwe.com</span>
+          <span>{{"general.email-address" | translation | async}}</span>
         </div>
       </div>
 
       <form class="form-inline m-2">
-        <input class="form-control mr-2" type="search" placeholder="Search Product" aria-label="Search">
+        <input class="form-control mr-2" type="search" placeholder="{{'general.search-product' | translation | async}}" aria-label="Search">
         <button class="btn btn-success" type="submit">Search</button>
       </form>
     </div>

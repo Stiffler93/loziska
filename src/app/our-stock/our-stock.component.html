@@ -4,13 +4,13 @@
       <button id="button-basic" dropdownToggle type="button" class="btn btn-lg dropdown-toggle"
               aria-controls="dropdown-basic">
         <i class="{{selectedProduct.icon}}"></i>
-        <span>{{selectedProduct.name}}</span>
+        <span>{{selectedProduct.name | translation | async}}</span>
         <span class="caret"></span>
       </button>
 
       <div id="fastFilter" [class.openSearchbar]="searchBar.value !== '' || searchBar.focused || searchBar.hovered"
            (mouseenter)="searchBar.hovered = true" (mouseleave)="searchBar.hovered = false">
-        <input id="filter" class="form-control" type="search" placeholder="Search Product" aria-label="Search"
+        <input id="filter" class="form-control" type="search" placeholder="{{'general.search-product' | translation | async}}" aria-label="Search"
                [class.visibleInput]="searchBar.value !== '' || searchBar.focused || searchBar.hovered"
                [(ngModel)]="searchBar.value" (input)="filter()"
                (focus)="searchBar.focused = true" (blur)="searchBar.focused = false"/>
@@ -27,9 +27,9 @@
                 <i class="{{product.icon}}"></i>
               </div>
               <div class="productInfo">
-                <h3>{{product.name}}</h3>
+                <h3>{{product.name | translation | async}}</h3>
                 <span>
-                {{product.text}}
+                {{product.text | translation | async}}
               </span>
               </div>
             </div>
@@ -42,19 +42,19 @@
         <button *ngFor="let product of availableProducts" class="list-group-item list-group-item-action"
                 [class.active]="selectedProduct.name === product.name" (click)="changeProduct(product)">
           <i class="{{product.icon}} mr-3"></i>
-          <span>{{product.name}}</span>
+          <span>{{product.name | translation | async}}</span>
 
           <div *ngIf="product.subproducts" class="collapse mt-3" [collapse]="isCollapsed(product)">
             <button *ngFor="let subproduct of product.subproducts" class="list-group-item list-group-item-action"
                     [class.active]="selectedProduct.name === subproduct.name" (click)="changeProduct(subproduct); $event.stopPropagation()">
               <i class="{{subproduct.icon}} mr-3"></i>
-              <span>{{subproduct.name}}</span>
+              <span>{{subproduct.name | translation | async}}</span>
             </button>
           </div>
 
         </button>
         <hr/>
-        <span>{{selectedProduct.text}}</span>
+        <span>{{selectedProduct.text | translation | async}}</span>
       </div>
 
     </div>
@@ -64,7 +64,7 @@
     id="dataTable"
     class="ag-theme-balham"
     [rowData]="selectedProduct.gridData"
-    [columnDefs]="selectedProduct.columnDefs"
+    [columnDefs]="selectedProduct.columnDefs | objTranslation | async"
     [gridOptions]="gridOptions"
   >
   </ag-grid-angular>
