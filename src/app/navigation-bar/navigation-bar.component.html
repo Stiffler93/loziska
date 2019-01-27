@@ -2,6 +2,8 @@
   <nav class="navbar navbar-expand-md navbar-light fixed-top">
     <a class="navbar-brand" routerLink="/" (click)="isCollapsed = true" [class.active-page]="'/' === router.url"><img class="navbar-logo" src="assets/icons/icon.png"/></a>
 
+    <app-language id="languageSelector"></app-language>
+
     <button class="custom-toggler navbar-toggler" [class.open]="!isCollapsed" type="button" aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -12,7 +14,7 @@
           <a routerLink="/our-store" (click)="isCollapsed = true" routerLinkActive="active" [class.active-page]="'/our-store' === router.url">{{"nav.our-store" | translation | async}}</a>
         </li>
         <li class="nav-item nav-link">
-          <a routerLink="/our-stock" (click)="isCollapsed = true" routerLinkActive="active" [class.active-page]="'/our-stock' === router.url">{{"nav.our-store" | translation | async}}</a>
+          <a routerLink="/our-stock" (click)="isCollapsed = true" routerLinkActive="active" [class.active-page]="'/our-stock' === router.url">{{"nav.our-stock" | translation | async}}</a>
         </li>
       </div>
 

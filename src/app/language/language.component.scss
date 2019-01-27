@@ -1,0 +1,60 @@
+@import "~src/app/loziska-app-theme";
+
+.language-icon {
+  width: 2em;
+  margin: 0.2em auto;
+}
+
+.hidden {
+  display: none;
+}
+
+//#button-basic, #languageDropdown {
+//  outline: none !important;
+//
+//  & > :active, :hover, :visited, :focus {
+//    outline: none !important;
+//  }
+//}
+
+#button-basic, #languageDropdown {
+  border-color: $secondary !important;
+
+  &:focus {
+    outline: none !important;
+  }
+
+  &.open {
+    outline: none !important;
+    border: 3px solid $secondary;
+    box-shadow: 0 0 10px $secondary-light;
+  }
+}
+
+.dropdown-menu {
+  float: left;
+  min-width: 0;
+  width:100%;
+  font-size: 1rem;
+  text-align: center;
+  background-color: #fff;
+  background-clip: padding-box;
+
+  & > .dropdown-item {
+    width: 100%;
+    padding: 0.4em 0.1em;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:active {
+      background-color: $secondary-light;
+    }
+
+    & > img {
+      width: 90%;
+      border: solid $primary-dark;
+    }
+  }
+}

@@ -2,13 +2,14 @@ import {Injectable} from '@angular/core';
 import {ConfigurationService} from './configuration.service';
 import {Translation} from './model/Translation';
 import {HttpClient} from '@angular/common/http';
+import {Language} from '../language/model/Language';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TranslationService {
 
-  public activeLanguage = 'cz';
+  private activeLanguage: Language = new Language('Czech', 'cz');
   private loaded = false;
   private translations: Translation[] = [];
   private promise: Promise<Translation[]>;
@@ -17,14 +18,14 @@ export class TranslationService {
   }
 
   private load(): Promise<Translation[]> {
-    this.promise = this.configuration.getConfig('languages').then((config: object[]) => {
-      const loadTranslations: Promise<Translation>[] = config.map(language => new Promise<Translation>((resolve) => {
-        resolve(this.http.get('assets/translations/' + language['short'] + '.json', {responseType: 'json'}).toPromise()
+    this.promise = this.configuration.getConfig('languages').then((config: Language[]) => {
+      const loadTranslations: Promise<Translation>[] = config.map((language: Language) => new Promise<Translation>((resolve) => {
+        resolve(this.http.get('assets/translations/' + language.short + '.json', {responseType: 'json'}).toPromise()
           .then(result => {
-            const trans: Translation = new Translation(language['name'], language['short']);
+            const trans: Translation = new Translation(language.name, language.short);
             trans.parse(result);
-            this.translations[language['short']] = trans;
-            console.log('translations for ' + language['short'] + ' loaded');
+            this.translations[language.short] = trans;
+            console.log('translations for ' + language.short + ' loaded');
             return trans;
           }));
       }));
@@ -41,7 +42,7 @@ export class TranslationService {
   public translate(value: string): Promise<string> {
 
     if (this.loaded) {
-      let content: object = this.translations[this.activeLanguage]['content'];
+      let content: object = this.translations[this.activeLanguage.short]['content'];
       const path: string[] = value.split('.');
 
       for (let i = 0; i < path.length - 1; i++) {
@@ -49,6 +50,7 @@ export class TranslationService {
       }
 
       const translation: string = content[path[path['length'] - 1]];
+      console.log(this.activeLanguage.name + ': translation for ' + value + ' is ' + translation);
       return (!translation || translation === '') ? Promise.resolve(value) : Promise.resolve(translation);
     }
 
@@ -57,7 +59,7 @@ export class TranslationService {
     }
 
     return this.promise.then((translations: Translation[]) => {
-      let content: object = translations[this.activeLanguage]['content'];
+      let content: object = translations[this.activeLanguage.short]['content'];
       const path: string[] = value.split('.');
 
       for (let i = 0; i < path.length - 1; i++) {
@@ -65,7 +67,13 @@ export class TranslationService {
       }
 
       const translation: string = content[path[path['length'] - 1]];
+      console.log(this.activeLanguage.name + ': translation for ' + value + ' is ' + translation);
       return (!translation || translation === '') ? value : translation;
     });
+  }
+
+  public setLanguage(language: Language): void {
+    console.log('change Language to ' + language.name);
+    this.activeLanguage = language;
   }
 }
