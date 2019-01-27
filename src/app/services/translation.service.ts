@@ -3,12 +3,14 @@ import {ConfigurationService} from './configuration.service';
 import {Translation} from './model/Translation';
 import {HttpClient} from '@angular/common/http';
 import {Language} from '../language/model/Language';
+import {Observable, Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TranslationService {
 
+  private changeSubject: Subject<boolean> = new Subject<boolean>();
   private activeLanguage: Language = new Language('Czech', 'cz');
   private loaded = false;
   private translations: Translation[] = [];
@@ -74,6 +76,18 @@ export class TranslationService {
 
   public setLanguage(language: Language): void {
     console.log('change Language to ' + language.name);
-    this.activeLanguage = language;
+    if(this.activeLanguage !== language) {
+      this.activeLanguage = language;
+      this.changeSubject.next(true);
+    }
+
+  }
+
+  public onLanguageChange(): Observable<boolean> {
+    return this.changeSubject.asObservable();
+  }
+
+  public getActiveLanguage(): Language {
+    return this.activeLanguage;
   }
 }
