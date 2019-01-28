@@ -11,12 +11,20 @@ nav {
 .navbar {
   background-color: $primary;
   color: $text-on-primary;
+
+  #languageSelector {
+    margin: 0 1em 0 auto;
+  }
 }
 
 .active-page {
   color: $secondary !important;
   text-shadow: -1px 0 $secondary-light, 0 1px $secondary-light, 1px 0 $secondary-light, 0 -1px $secondary-light;
 
+}
+
+#subNavigation {
+  display: none;
 }
 
 .form-control {
@@ -69,7 +77,6 @@ nav {
   display: flex;
   width: 100%;
   flex-direction: row;
-  //background-color: rgba(255, 255, 255, 0.1);
   justify-content: space-around;
   flex-wrap: wrap;
   flex: 1;
@@ -99,6 +106,7 @@ nav {
 .nav-item {
   font-size: 1em;
   font-weight: bold;
+  white-space: nowrap;
 }
 
 #navbarSupportedContent #contactInformation {
@@ -125,12 +133,34 @@ nav {
   }
 }
 
+#contactInformationBelow {
+  display: none;
+}
+
 .form-control {
   flex: 1;
 }
 
 /* Small devices (tablets, 768px and up) */
-@media (min-width: 768px) {
+@media (min-width: 992px) {
+
+  #subNavigation {
+    display: flex;
+    background-color: $primary-light;
+    padding: 1em 3em;
+
+    #contactInformationSubBar {
+      display: flex;
+    }
+
+    #languageSelectorSubBar {
+
+    }
+  }
+
+  #languageSelector {
+
+  }
 
   #menuItems {
     flex-wrap: nowrap;
@@ -156,8 +186,9 @@ nav {
     font-size: 1.1em;
     font-weight: bold;
   }
-
+  
   #navbarSupportedContent #contactInformation {
+    //display: none;
     margin-top: 0em;
   }
 

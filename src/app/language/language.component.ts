@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Language} from './model/Language';
 import {ConfigurationService} from '../services/configuration.service';
 import {TranslationService} from '../services/translation.service';
@@ -9,6 +9,8 @@ import {TranslationService} from '../services/translation.service';
   styleUrls: ['./language.component.scss']
 })
 export class LanguageComponent implements OnInit {
+
+  @Input('type') private type: string;
 
   private languages: Language[] = [];
 

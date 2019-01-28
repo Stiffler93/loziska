@@ -1,4 +1,4 @@
-<div id="languageDropdown" class="btn-group" dropdown>
+<div *ngIf="type === 'dropdown'" id="languageDropdown" class="btn-group" dropdown>
   <button id="button-basic" dropdownToggle type="button" class="btn btn-lg dropdown-toggle"
           aria-controls="dropdown-basic">
     <img class="language-icon" src="{{'assets/images/' + getActiveLanguage().short + '.png'}}"/>
@@ -12,5 +12,13 @@
       <img class="language-icon" src="{{'assets/images/' + language.short + '.png'}}" (click)="changeLanguage(language)"/>
     </li>
 
+  </ul>
+</div>
+<div *ngIf="type !== 'dropdown'" id="languageBox">
+  <ul id="flagList">
+    <li class="box-item" *ngFor="let language of languages">
+      <img class="language-icon" src="{{'assets/images/' + language.short + '.png'}}" (click)="changeLanguage(language)"
+      [class.active]="getActiveLanguage().short === language.short"/>
+    </li>
   </ul>
 </div>

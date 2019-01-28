@@ -52,7 +52,6 @@ export class TranslationService {
       }
 
       const translation: string = content[path[path['length'] - 1]];
-      console.log(this.activeLanguage.name + ': translation for ' + value + ' is ' + translation);
       return (!translation || translation === '') ? Promise.resolve(value) : Promise.resolve(translation);
     }
 
@@ -69,7 +68,6 @@ export class TranslationService {
       }
 
       const translation: string = content[path[path['length'] - 1]];
-      console.log(this.activeLanguage.name + ': translation for ' + value + ' is ' + translation);
       return (!translation || translation === '') ? value : translation;
     });
   }
@@ -80,7 +78,6 @@ export class TranslationService {
       this.activeLanguage = language;
       this.changeSubject.next(true);
     }
-
   }
 
   public onLanguageChange(): Observable<boolean> {
