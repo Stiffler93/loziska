@@ -1,30 +1,29 @@
 @import "~src/app/loziska-app-theme";
 
-nav {
-  background-color: rgba(0, 0, 255, 0.1);
-}
+#navigationBarDiv {
 
-.navbar-logo {
-  height: 3em;
-}
+  .navbar {
+    background-color: $primary;
+    color: $text-on-primary;
 
-.navbar {
-  background-color: $primary;
-  color: $text-on-primary;
+    .navbar-logo {
+      height: 3em;
+    }
 
-  #languageSelector {
-    margin: 0 1em 0 auto;
+    #languageSelector {
+      margin: 0 1em 0 auto;
+    }
+  }
+
+  #subNavigation {
+    display: none;
   }
 }
+
 
 .active-page {
   color: $secondary !important;
   text-shadow: -1px 0 $secondary-light, 0 1px $secondary-light, 1px 0 $secondary-light, 0 -1px $secondary-light;
-
-}
-
-#subNavigation {
-  display: none;
 }
 
 .form-control {
@@ -63,7 +62,6 @@ nav {
   &:hover, &:focus, &:active, &.active {
     border-color: $secondary-dark !important;
     background-color: $secondary-dark !important;
-
   }
 
   &:active, &.active, &:visited, &:focus {
@@ -144,22 +142,51 @@ nav {
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 992px) {
 
-  #subNavigation {
-    display: flex;
-    background-color: $primary-light;
-    padding: 1em 3em;
+  #navigationBarDiv {
 
-    #contactInformationSubBar {
+    #subNavigation {
       display: flex;
-    }
+      background-color: rgba($primary-light, 0.5);
+      padding: 1em 3em;
 
-    #languageSelectorSubBar {
+      #contactInformationSubBar {
+        display: flex;
+        margin-top: 0em;
+        justify-content: flex-end;
+        width: auto;
 
+        & > div {
+          display: inline-flex;
+          flex-direction: row;
+          padding: 0;
+          margin: 0;
+          align-items: center;
+          justify-content: center;
+
+          & > i {
+            color: $text-on-primary;
+
+            &:hover {
+              color: $secondary;
+            }
+          }
+
+          & > span {
+            vertical-align: middle;
+            margin: 0 .3em;
+            color: $text-on-primary;
+          }
+        }
+      }
+
+      #languageSelectorSubBar {
+        display: flex;
+      }
     }
   }
 
   #languageSelector {
-
+    display: none;
   }
 
   #menuItems {
@@ -186,42 +213,29 @@ nav {
     font-size: 1.1em;
     font-weight: bold;
   }
-  
-  #navbarSupportedContent #contactInformation {
-    //display: none;
-    margin-top: 0em;
-  }
 
-  #navbarSupportedContent #contactInformation > div {
+  #navbarSupportedContent #contactInformation {
     display: none;
-    flex-direction: row;
-    padding: 0;
-    justify-content: center;
-  }
-
-  #navbarSupportedContent #contactInformation {
+    margin-top: 0em;
     justify-content: flex-end;
     width: auto;
+
+    & > div {
+      display: inline-flex;
+      flex-direction: row;
+      padding: 0;
+      justify-content: center;
+
+      & > span {
+        line-height: 2em;
+        vertical-align: middle;
+        margin: 0 .3em;
+      }
+    }
   }
 
-  #navbarSupportedContent #contactInformation > div > span {
-    line-height: 2em;
-    vertical-align: middle;
-    margin: 0 .3em;
-  }
-}
-
-@media (min-width: 992px) {
   #navbarSupportedContent > .form-inline {
     max-width: 20em;
-  }
-
-  #navbarSupportedContent #contactInformation > div {
-    display: inline-flex;
-  }
-
-  #navbarSupportedContent #contactInformation > div:nth-of-type(2) {
-    display: none;
   }
 }
 
