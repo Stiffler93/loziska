@@ -11,7 +11,7 @@
 #ourStoreSection #openingTimes {
   display: flex;
   flex-direction: column;
-  margin: 6.5em auto 1em;
+  margin: 7.5rem auto 1em;
   max-width: 1000px;
   width: 80%;
 }
@@ -85,14 +85,13 @@
 
   #ourStoreSection #welcomeText h1 {
     display: block;
-    margin: 1em 0;
+    margin: 0 0 1em 0;
     text-align: center;
     width: 100%;
   }
 
   #ourStoreSection #googleMaps {
-    margin-left: 3em;
-    margin-right: 1.5em;
+    margin: 0 1.5em 2em 3em;
     flex: 1;
   }
 

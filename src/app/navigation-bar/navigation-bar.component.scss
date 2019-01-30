@@ -146,12 +146,13 @@
 
     #subNavigation {
       display: flex;
-      background-color: rgba($primary-light, 0.5);
-      padding: 1em 3em;
+      background-color: rgba($primary, 0.5);
+      justify-content: flex-end;
+      padding: 0.2em;
 
       #contactInformationSubBar {
         display: flex;
-        margin-top: 0em;
+        margin-top: 0;
         justify-content: flex-end;
         width: auto;
 
@@ -165,6 +166,7 @@
 
           & > i {
             color: $text-on-primary;
+            margin-left: 2em;
 
             &:hover {
               color: $secondary;
@@ -175,6 +177,7 @@
             vertical-align: middle;
             margin: 0 .3em;
             color: $text-on-primary;
+            font-size: 1.2em;
           }
         }
       }
@@ -216,7 +219,7 @@
 
   #navbarSupportedContent #contactInformation {
     display: none;
-    margin-top: 0em;
+    margin-top: 0;
     justify-content: flex-end;
     width: auto;
 
