@@ -19,7 +19,6 @@ export class OurStockComponent implements OnInit {
 
   public gridOptions: GridOptions = {
     enableColResize: true, enableSorting: true, onModelUpdated: () => {
-      console.log('grid model updated');
       this.gridOptions.columnApi.autoSizeAllColumns();
     }
   };
@@ -57,7 +56,6 @@ export class OurStockComponent implements OnInit {
   }
 
   public changeProduct(product: Product): void {
-    console.log({'new Product:': product});
     this.selectedProduct = product;
 
     if (!this.selectedProduct.gridData) {

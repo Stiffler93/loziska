@@ -19,8 +19,6 @@ export class TranslationService {
     this.configuration.getConfig('languages')
       .pipe(
         map((languages: Language[]) => {
-          console.log('Languages 2 loaded: ');
-          console.log(languages);
           return languages.map((language: Language) => new Translation(language));
         }),
         switchMap((translations: Translation[]) => {
@@ -29,7 +27,6 @@ export class TranslationService {
               .pipe(
                 map(result => {
                   translation.parse(result);
-                  console.log('(Observable) translations for ' + translation.language.short + ' loaded');
                   return translation;
                 })
               )
@@ -49,8 +46,6 @@ export class TranslationService {
   }
 
   private getTranslationForKey(translation: Translation, key: string): string {
-    console.log('Translation: ');
-    console.log(translation);
     let content: object = translation['content'];
     const path: string[] = key.split('.');
 
@@ -63,11 +58,8 @@ export class TranslationService {
   }
 
   public setLanguage(language: Language): void {
-    console.log('change Language to ' + language.name);
     if (this.activeLanguage.short !== language.short) {
       this.activeLanguage = language;
-      console.log('Next translation: ');
-      console.log(this.translations[language.short]);
       this.activeTranslationSubject.next(this.translations[language.short]);
     }
   }

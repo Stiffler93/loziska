@@ -1,11 +1,10 @@
 import {Pipe, PipeTransform} from '@angular/core';
 import {TranslationService} from '../translation.service';
-import {forkJoin, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {zip, Observable, combineLatest} from 'rxjs';
+import {map, catchError} from 'rxjs/operators';
 
 @Pipe({
-  name: 'objTranslation',
-  pure: true
+  name: 'objTranslation', pure: true
 })
 export class ObjTranslationPipe implements PipeTransform {
 
@@ -13,15 +12,13 @@ export class ObjTranslationPipe implements PipeTransform {
   }
 
   transform(objects: object[]): Observable<object[]> {
-    const observables: Observable<object>[] = objects.map(obj =>
-      this.translation.translate('stock.table-headlines.' + obj['headerName'])
-        .flatMap((translation: string) => {
-          obj['headerName'] = translation;
-          return obj;
-        })
-    );
+    const observables: Observable<object>[] = objects.map(obj => this.translation.translate('stock.table-headlines.' + obj['headerName'])
+      .pipe(map((value: string) => {
+        return {headerName: value, field: obj['field']};
+      })));
 
-    return forkJoin(observables);
+
+    return combineLatest(observables);
   }
 
 }

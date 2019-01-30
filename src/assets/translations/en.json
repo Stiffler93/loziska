@@ -1,55 +1,56 @@
 {
   "nav": {
-    "our-store": "Unser Geschäft (en)",
-    "our-stock": "Unser Lager (en)"
+    "our-store": "Our Shop",
+    "our-stock": "Our Store"
   },
   "welcome": {
-    "title": "Loziska",
-    "subtitle": "Vaclav Haruda",
-    "supplier-head": "Ihr Anbieter für Service Zubehör",
-    "headline": "Herzlich Willkommen!",
+    "title": "Ložiska",
+    "subtitle": "Václav Haruda",
+    "supplier-head": "Your supplier of bearings",
+    "headline": "Welcome to our website!",
     "introduction": "Naše společnost Vám nabízí jen ty nejkvalitnější služby v oboru. Neváhejte a využijte našich kvalitních služeb, moderních metod. Náš profesionální personál je vám vždy plně k dispozici. Naší předností je neustálé zkvalitňování a vylepšování námi nabízených služeb. Důkazem je stále vzrůstající počet spokojených zákazníků."
   },
   "store": {
-    "opening-times": "Wir haben geöffnet: Mo-Fr 7:00-16:00",
-    "headline": "Herzlich Willkommen!",
+    "opening-times": "Opening times: Mon - Fri 7:30 a.m. - 3:15 p.m.",
+    "headline": "Welcome to our website!",
     "introduction": "Naše společnost Vám nabízí jen ty nejkvalitnější služby v oboru. Neváhejte a využijte našich kvalitních služeb, moderních metod. Náš profesionální personál je vám vždy plně k dispozici. Naší předností je neustálé zkvalitňování a vylepšování námi nabízených služeb. Důkazem je stále vzrůstající počet spokojených zákazníků.",
-    "location-pretext": "Wo Sie uns finden:"
+    "location-pretext": "Where can you find us:"
   },
   "stock": {
     "products": {
-      "radial-shaft-seals": "Wellendichtringe",
+      "radial-shaft-seals": "Shaft seal",
       "radial-shaft-seals-description": " Description",
-      "fan-belts": "Keilriemen",
-      "fan-belts-description": "Keilriemen Description",
-      "ball-bearings": "Kugellager",
-      "ball-bearings-description": "Kugellager Description",
+      "fan-belts": "V-belt",
+      "fan-belts-description": "V-Belt Description",
+      "ball-bearings": "Bearing",
+      "ball-bearings-description": "Bearings Description",
       "ball-bearings-SKF-NSK-FAG": "SKF, NSK, FAG",
       "ball-bearings-SKF-NSK-FAG-description": "SKF, NSK, FAG Description",
       "ball-bearings-ZKL-ZKV": "ZKL, ZKV",
       "ball-bearings-ZKL-ZKV-description": "ZKL, ZKV Description",
-      "ball-bearings-Domeckova": "Domeckova",
-      "ball-bearings-Domeckova-description": "Domeckova Description",
+      "ball-bearings-Domeckova": "Pillow block bearing",
+      "ball-bearings-Domeckova-description": "Pillow block bearing Description",
       "o-rings": "O-Ringe",
       "o-rings-description": "O-Ringe Description",
       "Scheiß": "Scheiß",
       "Scheiß-description": "Scheiß Description",
-      "assortment": "Sortiment",
-      "assortment-description": "Sortiment Description"
+      "assortment": "Assortment",
+      "assortment-description": "Assortment Description"
     },
     "table-headlines": {
       "Popis": "Popis",
-      "Stav zásoby": "Stav zásoby",
-      "Cena bez DPH": "Cena bez DPH",
-      "Cena s DPH": "Cena s DPH",
-      "Zkratka": "Zkratka"
+      "Stav zásoby": "Stock",
+      "Cena bez DPH": "Price without VAT",
+      "Cena s DPH": "Price wit VAT",
+      "Zkratka": "Abbreviation"
     }
   },
   "general": {
-    "phone-number": "0664/75050088",
-    "email-address": "stefan.leopold@hotmail.com",
-    "address": "2073 Schrattenthal, Waitzendorf 29",
+    "phone-number": "+420 602 219 188",
+    "email-address": "loziskaharuda@seznam.cz",
+    "address": "Otín 252, areál čerpací stanice JH-Oil, Jindřichův Hradec",
     "search-product": "Search Product",
     "search": "Search"
   }
 }
+
