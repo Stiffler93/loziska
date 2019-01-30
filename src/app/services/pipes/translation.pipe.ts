@@ -11,11 +11,6 @@ export class TranslationPipe implements PipeTransform {
   }
 
   transform(value: string): Observable<string> {
-    return Observable.create(observer => {
-      this.translation.translate(value).then((translation: string) => observer.next(translation));
-      this.translation.onLanguageChange().subscribe(() => {
-        this.translation.translate(value).then((translation: string) => observer.next(translation));
-      })
-    });
+    return this.translation.translate(value);
   }
 }

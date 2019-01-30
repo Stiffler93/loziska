@@ -28,7 +28,7 @@ export class OurStockComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.configuration.getConfigWithObservables('products').subscribe((value: string[]) => {
+    this.configuration.getConfig('products').subscribe((value: string[]) => {
       this.parseProducts(value, this.availableProducts);
       this.changeProduct(this.availableProducts[0]);
     });

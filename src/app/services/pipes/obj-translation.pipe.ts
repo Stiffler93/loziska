@@ -1,5 +1,7 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
 import {TranslationService} from '../translation.service';
+import {forkJoin, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Pipe({
   name: 'objTranslation',
@@ -7,18 +9,19 @@ import {TranslationService} from '../translation.service';
 })
 export class ObjTranslationPipe implements PipeTransform {
 
-  constructor(private translation: TranslationService) {}
+  constructor(private translation: TranslationService) {
+  }
 
-  transform(value: object[]): Promise<object[]> {
-    console.log(value);
-    const promises: Promise<object>[] = value.map(obj => new Promise<object>(resolve => {
-      resolve(this.translation.translate('stock.table-headlines.' + obj['headerName']).then((translation: string) => {
-        obj['headerName'] = translation;
-        return obj;
-      }));
-    }));
+  transform(objects: object[]): Observable<object[]> {
+    const observables: Observable<object>[] = objects.map(obj =>
+      this.translation.translate('stock.table-headlines.' + obj['headerName'])
+        .flatMap((translation: string) => {
+          obj['headerName'] = translation;
+          return obj;
+        })
+    );
 
-    return Promise.all(promises);
+    return forkJoin(observables);
   }
 
 }

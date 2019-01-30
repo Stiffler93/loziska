@@ -18,10 +18,9 @@ export class LanguageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.configuration.getConfigWithObservables('languages')
+    this.configuration.getConfig('languages')
       .subscribe((languages: Language[]) => {
         this.languages = languages;
-        this.changeLanguage(languages[0]);
       });
   }
 

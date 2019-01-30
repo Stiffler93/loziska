@@ -1,8 +1,10 @@
+import {Language} from '../../language/model/Language';
+
 export class Translation {
 
   content: object;
 
-  constructor(private name: string, private short: string) {
+  constructor(public language: Language) {
   }
 
   public parse(data: object): void {
