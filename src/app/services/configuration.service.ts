@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +11,13 @@ export class ConfigurationService {
   configuration: object = {};
   loaded = false;
   promise: Promise<object> = undefined;
+  // configurationSubject: BehaviorSubject;
 
   constructor(private http: HttpClient) {
+  }
+
+  public loadConfigWithObservables(): Observable<object> {
+    return this.http.get('assets/configuration.json', {responseType: 'json'});
   }
 
   public loadConfig(): Promise<object> {
@@ -25,6 +32,10 @@ export class ConfigurationService {
 
         return this.configuration;
       });
+  }
+
+  public getConfigWithObservables(key: string): Observable<object> {
+    return this.loadConfigWithObservables().pipe(map(value => value[key]));
   }
 
   public getConfig(key: string): Promise<object> {

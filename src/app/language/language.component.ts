@@ -14,13 +14,15 @@ export class LanguageComponent implements OnInit {
 
   private languages: Language[] = [];
 
-  constructor(private configuration: ConfigurationService, private translation: TranslationService) { }
+  constructor(private configuration: ConfigurationService, private translation: TranslationService) {
+  }
 
   ngOnInit() {
-    this.configuration.getConfig('languages').then((languages: Language[]) => {
-      this.languages = languages;
-      this.changeLanguage(languages[0]);
-    });
+    this.configuration.getConfigWithObservables('languages')
+      .subscribe((languages: Language[]) => {
+        this.languages = languages;
+        this.changeLanguage(languages[0]);
+      });
   }
 
   public changeLanguage(language: Language): void {

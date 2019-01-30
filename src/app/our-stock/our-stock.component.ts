@@ -28,13 +28,13 @@ export class OurStockComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.configuration.getConfig('products').then((data: Array<string>) => {
-      this.parseProducts(data, this.availableProducts);
+    this.configuration.getConfigWithObservables('products').subscribe((value: string[]) => {
+      this.parseProducts(value, this.availableProducts);
       this.changeProduct(this.availableProducts[0]);
     });
   }
 
-  private parseProducts(data: Array<string>, target: Product[]): void {
+  private parseProducts(data: string[], target: Product[]): void {
     data.forEach(product => {
       const p: Product = new Product(product['name'], product['file'], product['icon'], product['text']);
       if (product['parameters']) {
@@ -50,7 +50,7 @@ export class OurStockComponent implements OnInit {
     });
   }
 
-  private parseParameters(data: Array<string>, target: string[]): void {
+  private parseParameters(data: string[], target: string[]): void {
     data.forEach(parameter => {
       target.push(parameter);
     });
@@ -60,16 +60,14 @@ export class OurStockComponent implements OnInit {
     console.log({'new Product:': product});
     this.selectedProduct = product;
 
-    if (!this.selectedProduct.gridData || !this.selectedProduct.columnDefs) {
-      this.data.getData(product).then(data => {
-        this.selectedProduct.gridData = data.data;
-        this.selectedProduct.columnDefs = data.headers.filter(header => header !== '')
-          .map(header => [{headerName: header, field: header}][0]);
+    if (!this.selectedProduct.gridData) {
+      this.data.getData(product).subscribe(value => {
+        this.selectedProduct = product;
       });
     }
   }
 
-  public isCollapsed(product: Product): Boolean {
+  public isCollapsed(product: Product): boolean {
     if (product.subproducts && product.subproducts.indexOf(this.selectedProduct) !== -1) {
       return false;
     }

@@ -3,6 +3,10 @@
 .language-icon {
   width: 2em;
   margin: 0.2em auto;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .hidden {

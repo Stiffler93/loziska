@@ -74,7 +74,7 @@ export class TranslationService {
 
   public setLanguage(language: Language): void {
     console.log('change Language to ' + language.name);
-    if(this.activeLanguage !== language) {
+    if (this.activeLanguage !== language) {
       this.activeLanguage = language;
       this.changeSubject.next(true);
     }

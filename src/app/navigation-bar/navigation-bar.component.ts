@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {SearchService} from '../services/search.service';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -9,15 +10,10 @@ import {Router} from '@angular/router';
 export class NavigationBarComponent implements OnInit {
 
   isCollapsed = true;
-  activePage = '/';
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private search: SearchService) {
   }
 
   ngOnInit() {
-  }
-
-  public setActive(page: string): void {
-    this.activePage = page;
   }
 }

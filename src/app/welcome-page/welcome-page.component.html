@@ -17,8 +17,9 @@
         </div>
       </div>
       <form class="form-inline m-2">
-        <input class="form-control mr-2" type="search" placeholder="{{'general.search-product' | translation | async}}" aria-label="Search">
-        <button class="btn btn-success" type="submit">{{"general.search" | translation | async}}</button>
+        <input class="form-control mr-2" type="search" placeholder="{{'general.search-product' | translation | async}}" aria-label="Search"
+               [ngModelOptions]="{standalone: true}" [(ngModel)]="search.searchTerm">
+        <button class="btn btn-success" type="submit" (click)="search.trigger()">{{"general.search" | translation | async}}</button>
       </form>
     </div>
 

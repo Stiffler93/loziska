@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Papa} from 'ngx-papaparse';
 import {HttpClient} from '@angular/common/http';
-import {TableData} from './model/TableData';
 import {Product} from '../our-stock/model/Product';
+import {forkJoin, Observable, of} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,31 +16,37 @@ export class DataService {
   constructor(private papa: Papa, private http: HttpClient) {
   }
 
-  private loadData(product: Product): Promise<TableData> {
-    console.log('Load ' + product.name);
-
+  private loadData(product: Product): Observable<Product> {
     if (!product.file && product.subproducts) {
-      const promises: Array<Promise<TableData>> = [];
-      product.subproducts.forEach(subproduct => promises.push(this.loadData(subproduct)));
-      return Promise.all(promises).then(tableDatas => {
-        let combinedTableData: object[] = [];
-        tableDatas.forEach(tableData => {
-          combinedTableData = combinedTableData.concat(tableData.data);
-        });
-        return new TableData(tableDatas[0].headers, combinedTableData);
-      });
+      const observables: Observable<Product>[] = [];
+      product.subproducts.forEach(subproduct => observables.push(this.loadData(subproduct)));
+
+      return forkJoin(observables).pipe(
+        map(subproducts => {
+          let combinedTableData: object[] = [];
+          subproducts.forEach((subproduct: Product) => {
+            combinedTableData = combinedTableData.concat(subproduct.gridData);
+          });
+
+          product.gridData = combinedTableData;
+          product.columnDefs = subproducts[0].columnDefs.filter(header => header['headerName'] !== '');
+          return product;
+        }));
     } else if (!product.file) {
-      return new Promise<TableData>(resolve => {
-        return new TableData([''], [{}]);
-      });
+      product.columnDefs = [{}];
+      product.gridData = [{}];
+      return of(product);
     }
 
     return this.http.get('assets/data/' + product.file, {responseType: 'text'})
-      .toPromise()
-      .then(stream => {
-        this.parseData(stream);
-        return new TableData(this.headers, this.data);
-      });
+      .pipe(
+        map(value => {
+          this.parseData(value);
+          product.gridData = this.data;
+          product.columnDefs = this.headers.filter(header => header !== '')
+            .map(header => [{headerName: header, field: header}][0]);
+          return product;
+        }));
   }
 
   private parseData(stream: string) {
@@ -55,9 +62,12 @@ export class DataService {
     });
   }
 
-  public getData(product: Product): Promise<TableData> {
-    return new Promise<TableData>(resolve => {
-      resolve(this.loadData(product));
-    });
+  public getData(product: Product): Observable<Product> {
+    if (product.gridData) {
+      const headers: string[] = product.columnDefs.map(value => value['headerName']);
+      return of(product);
+    }
+
+    return this.loadData(product);
   }
 }
