@@ -26,6 +26,12 @@
   width: 14em !important;
 }
 
+.badge-primary {
+  background-color: $secondary-light;
+  float: right;
+  margin: 0 1em 0 auto;
+}
+
 .visibleInput {
   display: inline-block !important;
 }
