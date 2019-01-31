@@ -18,7 +18,7 @@
       </div>
       <form class="form-inline m-2">
         <input class="form-control mr-2" type="search" placeholder="{{'general.search-product' | translation | async}}" aria-label="Search"
-               [ngModelOptions]="{standalone: true}" [(ngModel)]="search.searchTerm">
+               [ngModelOptions]="{standalone: true}" [(ngModel)]="search.searchTermSubject.value" (input)="search.change($event.srcElement.value)">
         <button class="btn btn-success" type="submit" (click)="search.trigger()">{{"general.search" | translation | async}}</button>
       </form>
     </div>

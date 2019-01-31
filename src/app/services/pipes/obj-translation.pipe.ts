@@ -17,7 +17,6 @@ export class ObjTranslationPipe implements PipeTransform {
         return {headerName: value, field: obj['field']};
       })));
 
-
     return combineLatest(observables);
   }
 
