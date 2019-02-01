@@ -7,14 +7,8 @@
     color: $text-on-primary;
 
     .navbar-logo {
-      display: inline-block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 14em;
-      height: 10em;
-      //background-color: $primary;
-
+      height: 3em;
+      width: 4em;
     }
 
     #languageSelector {
@@ -207,7 +201,7 @@
   }
 
   #menuItems {
-    margin-left: 16em;
+    margin-left: 1em;
     flex-wrap: nowrap;
     justify-content: flex-start;
     //background-color: rgba(255, 255, 255, 0);
