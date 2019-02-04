@@ -10,7 +10,6 @@ export class HttpCacheInterceptor implements HttpInterceptor {
   private cache: Map<String, ReplaySubject<HttpResponse<object>>> = new Map();
 
   constructor() {
-    console.log('Constructor HttpCacheInterceptor');
   }
 
   intercept(req: HttpRequest<object>, next: HttpHandler) {
@@ -20,7 +19,6 @@ export class HttpCacheInterceptor implements HttpInterceptor {
 
   sendRequest(req: HttpRequest<object>, next: HttpHandler): Observable<HttpEvent<object>> {
     this.put(req, new ReplaySubject<HttpResponse<object>>(1));
-    console.log('Request: ' + req.urlWithParams);
     return next.handle(req).pipe(
       tap(event => {
         if (event instanceof HttpResponse) {

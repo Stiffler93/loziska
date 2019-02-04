@@ -4,7 +4,7 @@ import {DataService} from '../services/data.service';
 import {ConfigurationService} from '../services/configuration.service';
 import {GridOptions} from 'ag-grid-community';
 import {SearchService} from '../services/search.service';
-import {forkJoin, Observable, Subscription} from 'rxjs';
+import {combineLatest, Observable, Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-our-stock', templateUrl: './our-stock.component.html', styleUrls: ['./our-stock.component.scss']
@@ -15,17 +15,13 @@ export class OurStockComponent implements OnInit, OnDestroy {
   private selectedProduct: Product = new Product('', '', '', '');
 
   searchBar = {
-    focused: false,
-    hovered: false
+    focused: false, hovered: false
   };
 
   public gridOptions: GridOptions = {
-    enableColResize: true,
-    enableSorting: true,
-    onModelUpdated: () => {
+    enableColResize: true, enableSorting: true, onModelUpdated: () => {
       this.gridOptions.columnApi.autoSizeAllColumns();
-    },
-    onFirstDataRendered: () => {
+    }, onFirstDataRendered: () => {
       const subscription = this.search.onChange().subscribe(value => {
         if (this.gridOptions.api) {
           this.gridOptions.api.setQuickFilter(value);
@@ -43,7 +39,7 @@ export class OurStockComponent implements OnInit, OnDestroy {
   ngOnInit() {
     const subscription = this.configuration.getConfig('products').subscribe((value: string[]) => {
       this.parseProducts(value, this.availableProducts);
-      this.changeProduct(this.availableProducts[0]);
+      this.switchToProductWithMostMatches();
     });
 
     this.subscriptions.push(subscription);
@@ -51,7 +47,6 @@ export class OurStockComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscriptions.forEach((subscription: Subscription) => {
-      console.log({'Unsubscribe': subscription});
       subscription.unsubscribe();
     });
   }
@@ -74,7 +69,7 @@ export class OurStockComponent implements OnInit, OnDestroy {
       target.push(p);
     });
 
-    forkJoin(observables).subscribe(() => {
+    combineLatest(observables).subscribe(() => {
       this.calculateFilterResults();
     });
   }
@@ -134,6 +129,20 @@ export class OurStockComponent implements OnInit, OnDestroy {
     });
 
     this.subscriptions.push(subscription);
+  }
+
+  private switchToProductWithMostMatches(): void {
+    let bestMatch = 0;
+
+    if (this.search.isActive()) {
+      for (let i = 1; i < this.availableProducts.length; i++) {
+        if (this.availableProducts[i].numData > this.availableProducts[bestMatch].numData) {
+          bestMatch = i;
+        }
+      }
+    }
+
+    this.changeProduct(this.availableProducts[bestMatch]);
   }
 
 }

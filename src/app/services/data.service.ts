@@ -81,7 +81,6 @@ export class DataService {
 
   public getData(product: Product): Observable<Product> {
     if (product.gridData) {
-      const headers: string[] = product.columnDefs.map(value => value['headerName']);
       return of(product);
     }
 

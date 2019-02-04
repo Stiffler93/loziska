@@ -27,8 +27,6 @@ export class SearchService {
   }
 
   public isActive(): boolean {
-    const isActive = this.searchTermSubject.value !== '';
-    console.log('isActive? ' + isActive);
-    return isActive;
+    return this.searchTermSubject.value !== '';
   }
 }
