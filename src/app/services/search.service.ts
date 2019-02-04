@@ -25,4 +25,10 @@ export class SearchService {
       this.router.navigateByUrl('/our-stock');
     }
   }
+
+  public isActive(): boolean {
+    const isActive = this.searchTermSubject.value !== '';
+    console.log('isActive? ' + isActive);
+    return isActive;
+  }
 }

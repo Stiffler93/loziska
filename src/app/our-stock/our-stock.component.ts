@@ -1,11 +1,10 @@
-import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Product} from './model/Product';
 import {DataService} from '../services/data.service';
 import {ConfigurationService} from '../services/configuration.service';
 import {GridOptions} from 'ag-grid-community';
 import {SearchService} from '../services/search.service';
-import {Observable, of, Subscription} from 'rxjs';
-import {flatMap, map} from 'rxjs/operators';
+import {forkJoin, Observable, Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-our-stock', templateUrl: './our-stock.component.html', styleUrls: ['./our-stock.component.scss']
@@ -21,13 +20,14 @@ export class OurStockComponent implements OnInit, OnDestroy {
   };
 
   public gridOptions: GridOptions = {
-    enableColResize: true, enableSorting: true, onModelUpdated: () => {
+    enableColResize: true,
+    enableSorting: true,
+    onModelUpdated: () => {
       this.gridOptions.columnApi.autoSizeAllColumns();
     },
     onFirstDataRendered: () => {
       const subscription = this.search.onChange().subscribe(value => {
         if (this.gridOptions.api) {
-          console.log('Grid Ready and API available');
           this.gridOptions.api.setQuickFilter(value);
         }
       });
@@ -41,14 +41,12 @@ export class OurStockComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log('On Init');
     const subscription = this.configuration.getConfig('products').subscribe((value: string[]) => {
       this.parseProducts(value, this.availableProducts);
       this.changeProduct(this.availableProducts[0]);
     });
-    this.subscriptions.push(subscription);
 
-    this.calculateFilterResults();
+    this.subscriptions.push(subscription);
   }
 
   ngOnDestroy() {
@@ -59,10 +57,11 @@ export class OurStockComponent implements OnInit, OnDestroy {
   }
 
   private parseProducts(data: string[], target: Product[]): void {
+    const observables: Observable<Product>[] = [];
+
     data.forEach(productString => {
       const p: Product = new Product(productString['name'], productString['file'], productString['icon'], productString['text']);
-      this.data.getData(p).subscribe(() => {
-      });
+      observables.push(this.data.getData(p));
       if (productString['parameters']) {
         this.parseParameters(productString['parameters'], p.parameters);
       }
@@ -74,6 +73,10 @@ export class OurStockComponent implements OnInit, OnDestroy {
       }
       target.push(p);
     });
+
+    forkJoin(observables).subscribe(() => {
+      this.calculateFilterResults();
+    });
   }
 
   private parseParameters(data: string[], target: string[]): void {
@@ -84,12 +87,6 @@ export class OurStockComponent implements OnInit, OnDestroy {
 
   public changeProduct(product: Product): void {
     this.selectedProduct = product;
-
-    if (!this.selectedProduct.gridData) {
-      this.data.getData(product).subscribe(() => {
-        this.selectedProduct = product;
-      });
-    }
   }
 
   public isCollapsed(product: Product): boolean {
@@ -109,25 +106,34 @@ export class OurStockComponent implements OnInit, OnDestroy {
 
   private calculateFilterResults(): void {
     const subscription = this.search.onChange().subscribe((searchTerm: string) => {
+      const searchTerms: string[] = searchTerm.split(' ').filter(term => term !== '').map(term => term.toLowerCase());
+
       this.availableProducts.forEach((product: Product) => {
         if (product.gridData) {
+          const column: object = product.columnDefs[0];
+
           const length = product.gridData.filter((row: object) => {
-            for (let i = 0; i < product.columnDefs.length; i++) {
-              const column: object = product.columnDefs[i];
-              const value: string = row[column['field']];
-              if (value && (value.indexOf(searchTerm) >= 0 || value.indexOf(searchTerm.toUpperCase()) >= 0)) {
-                return true;
+            let value: string = row[column['field']];
+
+            if (value) {
+              value = value.toLowerCase();
+              for (let i = 0; i < searchTerms.length; i++) {
+                if (value.indexOf(searchTerms[i]) === -1) {
+                  return false;
+                }
               }
+            } else {
+              return false;
             }
 
-            return false;
+            return true;
           }).length;
           product.numData = length;
-          console.log({'product': product});
         }
       });
     });
 
     this.subscriptions.push(subscription);
   }
+
 }

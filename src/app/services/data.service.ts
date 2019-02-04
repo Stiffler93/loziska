@@ -44,7 +44,24 @@ export class DataService {
           this.parseData(value);
           product.gridData = this.data;
           product.columnDefs = this.headers.filter(header => header !== '')
-            .map(header => [{headerName: header, field: header}][0]);
+            .map((header, index) => {
+              if (index === 0) {
+                return [{
+                  headerName: header,
+                  field: header,
+                  filter: 'agTextColumnFilter'
+                }][0];
+              } else {
+                return [{
+                  headerName: header,
+                  field: header,
+                  getQuickFilterText: function (params) {
+                    return null;
+                  }
+                }][0];
+              }
+            });
+
           return product;
         }));
   }

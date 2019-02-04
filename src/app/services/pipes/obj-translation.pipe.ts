@@ -12,10 +12,13 @@ export class ObjTranslationPipe implements PipeTransform {
   }
 
   transform(objects: object[]): Observable<object[]> {
-    const observables: Observable<object>[] = objects.map(obj => this.translation.translate('stock.table-headlines.' + obj['headerName'])
-      .pipe(map((value: string) => {
-        return {headerName: value, field: obj['field']};
-      })));
+    const observables: Observable<object>[] = objects.map(obj =>
+      this.translation.translate('stock.table-headlines.' + obj['headerName'])
+        .pipe(map((value: string) => {
+          const object = Object.assign({}, obj);
+          object['headerName'] = value;
+          return object;
+        })));
 
     return combineLatest(observables);
   }
