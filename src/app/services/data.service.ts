@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Papa} from 'ngx-papaparse';
+import {Papa, PapaParseResult} from 'ngx-papaparse';
 import {HttpClient} from '@angular/common/http';
 import {Product} from '../our-stock/model/Product';
 import {combineLatest, Observable, of} from 'rxjs';
@@ -71,8 +71,8 @@ export class DataService {
   private parseData(stream: string) {
     this.papa.parse(stream, {
       header: true,
-      complete: (result) => {
-        this.data = result.data;
+      complete: (result: PapaParseResult) => {
+        this.data = result.data.filter(d => d['Popis'] !== '');
         this.headers = result.meta.fields;
       }, error: error1 => {
         console.log('Error during Parsing');
