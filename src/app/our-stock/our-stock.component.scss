@@ -22,6 +22,10 @@
   height: 100vh;
 }
 
+#backgroundImg1 {
+  display: none;
+}
+
 .openSearchbar {
   width: 14em !important;
 }
@@ -229,7 +233,14 @@ input:active {
 }
 
 @media (min-width: 1200px) {
-  //#container {
-  //  width: 25em;
-  //}
+  #backgroundImg1 {
+    display: inline-block;
+    position: absolute;
+    bottom: 2em;
+    left: 2em;
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
 }
