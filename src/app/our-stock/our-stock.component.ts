@@ -4,7 +4,7 @@ import {DataService} from '../services/data.service';
 import {ConfigurationService} from '../services/configuration.service';
 import {GridOptions} from 'ag-grid-community';
 import {SearchService} from '../services/search.service';
-import {combineLatest, Observable, Subscription} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-our-stock', templateUrl: './our-stock.component.html', styleUrls: ['./our-stock.component.scss']
@@ -37,7 +37,7 @@ export class OurStockComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    const subscription = this.configuration.getConfig('products').subscribe((value: string[]) => {
+    const subscription = this.configuration.getConfig('products').subscribe((value: object[]) => {
       this.parseProducts(value, this.availableProducts);
       this.switchToProductWithMostMatches();
     });
@@ -46,31 +46,33 @@ export class OurStockComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.availableProducts.forEach((product: Product) => {
+      product.unlinkFromSearch();
+    });
+
     this.subscriptions.forEach((subscription: Subscription) => {
       subscription.unsubscribe();
     });
   }
 
-  private parseProducts(data: string[], target: Product[]): void {
+  private parseProducts(data: object[], target: Product[]): void {
     const observables: Observable<Product>[] = [];
 
-    data.forEach(productString => {
-      const p: Product = new Product(productString['name'], productString['file'], productString['icon'], productString['text']);
-      observables.push(this.data.getData(p));
-      if (productString['parameters']) {
-        this.parseParameters(productString['parameters'], p.parameters);
+    data.forEach(productObject => {
+      const p: Product = new Product(productObject['name'], productObject['file'], productObject['icon'], productObject['text']);
+
+      if (productObject['parameters']) {
+        this.parseParameters(productObject['parameters'], p.parameters);
       }
-      if (productString['products']) {
+      if (productObject['products']) {
         if (!p.subproducts) {
           p.subproducts = [];
         }
-        this.parseProducts(productString['products'], p.subproducts);
+        this.parseProducts(productObject['products'], p.subproducts);
       }
-      target.push(p);
-    });
 
-    combineLatest(observables).subscribe(() => {
-      this.calculateFilterResults();
+      this.data.getData(p).subscribe(() => p.linkToSearch(this.search));
+      target.push(p);
     });
   }
 
@@ -81,7 +83,9 @@ export class OurStockComponent implements OnInit, OnDestroy {
   }
 
   public changeProduct(product: Product): void {
-    this.selectedProduct = product;
+    if (this.selectedProduct !== product) {
+      this.selectedProduct = product;
+    }
   }
 
   public isCollapsed(product: Product): boolean {
@@ -99,38 +103,6 @@ export class OurStockComponent implements OnInit, OnDestroy {
     return this.selectedProduct;
   }
 
-  private calculateFilterResults(): void {
-    const subscription = this.search.onChange().subscribe((searchTerm: string) => {
-      const searchTerms: string[] = searchTerm.split(' ').filter(term => term !== '').map(term => term.toLowerCase());
-
-      this.availableProducts.forEach((product: Product) => {
-        if (product.gridData) {
-          const column: object = product.columnDefs[0];
-
-          const length = product.gridData.filter((row: object) => {
-            let value: string = row[column['field']];
-
-            if (value) {
-              value = value.toLowerCase();
-              for (let i = 0; i < searchTerms.length; i++) {
-                if (value.indexOf(searchTerms[i]) === -1) {
-                  return false;
-                }
-              }
-            } else {
-              return false;
-            }
-
-            return true;
-          }).length;
-          product.numData = length;
-        }
-      });
-    });
-
-    this.subscriptions.push(subscription);
-  }
-
   private switchToProductWithMostMatches(): void {
     let bestMatch = 0;
 
@@ -142,7 +114,19 @@ export class OurStockComponent implements OnInit, OnDestroy {
       }
     }
 
-    this.changeProduct(this.availableProducts[bestMatch]);
+    if (this.availableProducts[bestMatch].subproducts) {
+      let bestSubMatch = 0;
+      for (let i = 1; i < this.availableProducts[bestMatch].subproducts.length; i++) {
+        if (this.availableProducts[bestMatch].subproducts[i].numData >
+          this.availableProducts[bestMatch].subproducts[bestSubMatch].numData) {
+          bestSubMatch = i;
+        }
+      }
+
+      this.changeProduct(this.availableProducts[bestMatch].subproducts[bestSubMatch]);
+    } else {
+      this.changeProduct(this.availableProducts[bestMatch]);
+    }
   }
 
 }

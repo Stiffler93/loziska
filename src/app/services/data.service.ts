@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Papa} from 'ngx-papaparse';
 import {HttpClient} from '@angular/common/http';
 import {Product} from '../our-stock/model/Product';
-import {forkJoin, Observable, of} from 'rxjs';
+import {combineLatest, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Injectable({
@@ -17,11 +17,13 @@ export class DataService {
   }
 
   private loadData(product: Product): Observable<Product> {
+    console.log('Load data for product: ' + product.name);
+
     if (!product.file && product.subproducts) {
       const observables: Observable<Product>[] = [];
-      product.subproducts.forEach(subproduct => observables.push(this.loadData(subproduct)));
+      product.subproducts.forEach(subproduct => observables.push(this.getData(subproduct)));
 
-      return forkJoin(observables).pipe(
+      return combineLatest(observables).pipe(
         map(subproducts => {
           let combinedTableData: object[] = [];
           subproducts.forEach((subproduct: Product) => {
