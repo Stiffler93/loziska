@@ -28,6 +28,17 @@
 
 }
 
+.plainLinkStyle {
+  text-decoration: none !important;
+  color: $text-on-primary;
+}
+
+.markup {
+  &:hover {
+    color: $secondary-light !important;
+    cursor: pointer;
+  }
+}
 
 .active-page {
   color: $secondary !important;
@@ -122,18 +133,16 @@
   margin-top: 0.5em;
   font-size: 1.2em;
 
-  & > div {
-    display: inline-flex;
-    flex-basis: 50%;
-    flex-direction: column;
-    text-align: center;
-    padding: 1.5em 1em 0.5em 1em;
+  & > a {
+    & > div {
+      display: inline-flex;
+      flex-basis: 50%;
+      flex-direction: column;
+      text-align: center;
+      padding: 1.5em 1em 0.5em 1em;
 
-    & > i {
-      font-size: 2em;
-
-      &:hover {
-        color: $secondary;
+      & > i {
+        font-size: 2em;
       }
     }
   }
@@ -164,28 +173,26 @@
         justify-content: flex-end;
         width: auto;
 
-        & > div {
-          display: inline-flex;
-          flex-direction: row;
-          padding: 0;
-          margin: 0;
-          align-items: center;
-          justify-content: center;
+        & > a {
 
-          & > i {
+          & > div {
+            display: inline-flex;
+            flex-direction: row;
+            padding: 0;
+            margin: 0;
+            align-items: center;
+            justify-content: center;
             color: $text-on-primary;
-            margin-left: 2em;
 
-            &:hover {
-              color: $secondary;
+            & > i {
+              margin-left: 2em;
             }
-          }
 
-          & > span {
-            vertical-align: middle;
-            margin: 0 .3em;
-            color: $text-on-primary;
-            font-size: 1.2em;
+            & > span {
+              vertical-align: middle;
+              margin: 0 .3em;
+              font-size: 1.2em;
+            }
           }
         }
       }
@@ -232,16 +239,18 @@
     justify-content: flex-end;
     width: auto;
 
-    & > div {
-      display: inline-flex;
-      flex-direction: row;
-      padding: 0;
-      justify-content: center;
+    & > a {
+      & > div {
+        display: inline-flex;
+        flex-direction: row;
+        padding: 0;
+        justify-content: center;
 
-      & > span {
-        line-height: 2em;
-        vertical-align: middle;
-        margin: 0 .3em;
+        & > span {
+          line-height: 2em;
+          vertical-align: middle;
+          margin: 0 .3em;
+        }
       }
     }
   }

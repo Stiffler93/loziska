@@ -1,5 +1,10 @@
 @import "~src/app/loziska-app-theme";
 
+#backgroundImg1 {
+  display: none;
+  z-index: 0;
+}
+
 #ourStoreSection {
   display: flex;
   background-color: $background-color;
@@ -29,6 +34,7 @@
   flex-direction: column;
   width: 100%;
   margin: 0 auto;
+  z-index: 1;
 }
 
 #ourStoreSection #welcomeText {
@@ -36,6 +42,10 @@
   margin: 0 auto;
   max-width: 80%;
   text-align: justify;
+
+  & > p {
+    background: rgba(white, 0.7);
+  }
 }
 
 #ourStoreSection #welcomeText h1 {
@@ -44,8 +54,11 @@
   float: left;
 }
 
+
 #ourStoreSection #welcomeText #address {
   margin: 2em auto;
+  font-weight: bold;
+  font-size: 1.2em;
 }
 
 #ourStoreSection #googleMaps {
@@ -109,4 +122,15 @@
     display: none;
   }
 
+}
+
+
+@media (min-width: 1200px) {
+  #backgroundImg1 {
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 50%;
+  }
 }

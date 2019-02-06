@@ -1,7 +1,7 @@
 <div id="navigationBarDiv" class="fixed-top">
   <nav class="navbar navbar-expand-lg navbar-light">
     <a class="navbar-brand" routerLink="/" (click)="isCollapsed = true" [class.active-page]="'/' === router.url">
-      <!--<img class="navbar-logo" src="assets/icons/icon.png"/>-->
+
       <svg class="navbar-logo">
         <use class="logo-use" xlink:href="#logo"></use>
       </svg>
@@ -9,48 +9,61 @@
 
     <app-language type="dropdown" id="languageSelector"></app-language>
 
-    <button class="custom-toggler navbar-toggler" [class.open]="!isCollapsed" type="button" aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed">
+    <button class="custom-toggler navbar-toggler" [class.open]="!isCollapsed" type="button"
+            aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse navbar-nav" id="navbarSupportedContent" [collapse]="isCollapsed">
       <div id="menuItems">
         <li class="nav-item nav-link">
-          <a routerLink="/our-store" (click)="isCollapsed = true" routerLinkActive="active" [class.active-page]="'/our-store' === router.url">{{"nav.our-store" | translation | async}}</a>
+          <a routerLink="/our-store" (click)="isCollapsed = true" routerLinkActive="active"
+             [class.active-page]="'/our-store' === router.url">{{"nav.our-store" | translation | async}}</a>
         </li>
         <li class="nav-item nav-link">
-          <a routerLink="/our-stock" (click)="isCollapsed = true" routerLinkActive="active" [class.active-page]="'/our-stock' === router.url">{{"nav.our-stock" | translation | async}}</a>
+          <a routerLink="/our-stock" (click)="isCollapsed = true" routerLinkActive="active"
+             [class.active-page]="'/our-stock' === router.url">{{"nav.our-stock" | translation | async}}</a>
         </li>
       </div>
 
       <div id="contactInformation">
-        <div>
-          <i class="fa fa-phone"></i>
-          <span>{{"general.phone-number" | translation | async}}</span>
-        </div>
-        <div>
-          <i class="fa fa-at"></i>
-          <span>{{"general.email-address" | translation | async}}</span>
-        </div>
+        <a class="plainLinkStyle" href="tel:{{'general.phone-number' | translation | async}}">
+          <div class="markup">
+            <i class="fa fa-phone"></i>
+            <span>{{"general.phone-number" | translation | async}}</span>
+          </div>
+        </a>
+        <a class="plainLinkStyle" href="mailto:{{'general.email-address' | translation | async}}">
+          <div class="markup">
+            <i class="fa fa-at"></i>
+            <span>{{"general.email-address" | translation | async}}</span>
+          </div>
+        </a>
       </div>
 
       <form class="form-inline m-2">
-        <input class="form-control mr-2" type="search" placeholder="{{'general.search-product' | translation | async}}" aria-label="Search"
-               [ngModelOptions]="{standalone: true}" [(ngModel)]="search.searchTermSubject.value" (input)="search.change($event.srcElement.value)">
+        <input class="form-control mr-2" type="search" placeholder="{{'general.search-product' | translation | async}}"
+               aria-label="Search"
+               [ngModelOptions]="{standalone: true}" [(ngModel)]="search.searchTermSubject.value"
+               (input)="search.change($event.srcElement.value)">
         <button class="btn btn-success" type="submit" (click)="search.trigger()">Search</button>
       </form>
     </div>
   </nav>
   <div id="subNavigation">
     <div id="contactInformationSubBar">
-      <div>
-        <i class="fa fa-phone"></i>
-        <span>{{"general.phone-number" | translation | async}}</span>
-      </div>
-      <div>
-        <i class="fa fa-at"></i>
-        <span>{{"general.email-address" | translation | async}}</span>
-      </div>
+      <a class="plainLinkStyle" href="tel:{{'general.phone-number' | translation | async}}">
+        <div class="markup">
+          <i class="fa fa-phone"></i>
+          <span>{{"general.phone-number" | translation | async}}</span>
+        </div>
+      </a>
+      <a class="plainLinkStyle" href="mailto:{{'general.email-address' | translation | async}}">
+        <div class="markup">
+          <i class="fa fa-at"></i>
+          <span>{{"general.email-address" | translation | async}}</span>
+        </div>
+      </a>
     </div>
 
     <app-language id="languageSelectorSubBar"></app-language>

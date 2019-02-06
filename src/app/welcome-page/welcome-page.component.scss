@@ -1,5 +1,17 @@
 @import "~src/app/loziska-app-theme";
 
+.plainLinkStyle {
+  text-decoration: none !important;
+  color: $text-on-primary;
+}
+
+.markup {
+  &:hover {
+    color: $secondary-light !important;
+    cursor: pointer;
+  }
+}
+
 #welcomeSection {
   display: flex;
   height: 100vh;

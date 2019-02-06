@@ -1,4 +1,6 @@
 <section id="ourStoreSection">
+  <img id="backgroundImg1" src="/assets/images/bearing_background.png" />
+
   <div id="openingTimes">
     <hr/>
     <h2>{{"store.opening-times" | translation | async}}</h2>
@@ -14,26 +16,10 @@
 
     <div id="googleMaps">
       <h3>{{"store.location-pretext" | translation | async}}</h3>
-      <div id="map"></div>
+      <agm-map id="map" [latitude]="49.143537" [longitude]="15.025678" [zoom]="18">
+        <agm-marker [latitude]="49.143537" [longitude]="15.025678"></agm-marker>
+      </agm-map>
     </div>
   </div>
   <div id="dummy">H</div>
 </section>
-
-<script type="text/javascript">
-  function initMap() {
-    var location = {lat: -25.363, lng: 131.044};
-    var map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 4,
-      center: location
-    });
-
-    var marker = new google.maps.Marker({
-      position: location,
-      map: map
-    });
-  }
-</script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYzXj5wF4L6mChyyc5xwfb2QT1QEZ9VN8&callback=initMap">
-</script>

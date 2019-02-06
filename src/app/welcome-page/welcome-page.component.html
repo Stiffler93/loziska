@@ -7,19 +7,27 @@
         <hr/>
         <p>{{"welcome.supplier-head" | translation | async}}</p>
         <hr/>
-        <div>
-          <i class="fa fa-phone"></i>
-          <span>{{"general.phone-number" | translation | async}}</span>
-        </div>
-        <div>
-          <i class="fa fa-at"></i>
-          <span>{{"general.email-address" | translation | async}}</span>
-        </div>
+        <a class="plainLinkStyle" href="tel:{{'general.phone-number' | translation | async}}">
+          <div class="markup">
+            <i class="fa fa-phone"></i>
+            <span>{{"general.phone-number" | translation | async}}</span>
+          </div>
+        </a>
+        <a class="plainLinkStyle" href="mailto:{{'general.email-address' | translation | async}}">
+          <div class="markup">
+            <i class="fa fa-at"></i>
+            <span>{{"general.email-address" | translation | async}}</span>
+          </div>
+        </a>
       </div>
       <form class="form-inline m-2">
-        <input class="form-control mr-2" type="search" placeholder="{{'general.search-product' | translation | async}}" aria-label="Search"
-               [ngModelOptions]="{standalone: true}" [(ngModel)]="search.searchTermSubject.value" (input)="search.change($event.srcElement.value)">
-        <button class="btn btn-success" type="submit" (click)="search.trigger()">{{"general.search" | translation | async}}</button>
+        <input class="form-control mr-2" type="search" placeholder="{{'general.search-product' | translation | async}}"
+               aria-label="Search"
+               [ngModelOptions]="{standalone: true}" [(ngModel)]="search.searchTermSubject.value"
+               (input)="search.change($event.srcElement.value)">
+        <button class="btn btn-success" type="submit" (click)="search.trigger()">{{"general.search" | translation |
+          async}}
+        </button>
       </form>
     </div>
 

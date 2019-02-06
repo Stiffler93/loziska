@@ -18,12 +18,15 @@ import {TranslationPipe} from './services/pipes/translation.pipe';
 import {ObjTranslationPipe} from './services/pipes/obj-translation.pipe';
 import {LanguageComponent} from './language/language.component';
 import {HttpCacheInterceptor} from './services/interceptors/http-cache.interceptor';
+import {AgmCoreModule} from '@agm/core';
 
 @NgModule({
   declarations: [AppComponent, NavigationBarComponent, WelcomePageComponent, OurStockComponent, OurStoreComponent, TranslationPipe,
     ObjTranslationPipe, LanguageComponent],
   imports: [BrowserModule, FormsModule, AppRoutingModule, AngularFontAwesomeModule, CollapseModule.forRoot(), BsDropdownModule.forRoot(),
-    PapaParseModule, HttpClientModule, AgGridModule.withComponents([])],
+    PapaParseModule, HttpClientModule, AgGridModule.withComponents([]), AgmCoreModule.forRoot({
+      apiKey: ''
+    })],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpCacheInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
