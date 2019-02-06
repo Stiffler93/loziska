@@ -114,8 +114,7 @@ input:active {
 #dropdown-basic {
   width: 100%;
   overflow-x: hidden;
-  overflow-y: scroll;
-  height: 70vh;
+  //overflow-y: scroll;
 
   li {
     margin: 0.2em 0;
@@ -124,6 +123,11 @@ input:active {
 
 .dropdown-item {
   cursor: pointer;
+  margin: 0.5em 0;
+
+  &:hover {
+    background: $secondary;
+  }
 
   .productItem {
     display: flex;
@@ -138,7 +142,18 @@ input:active {
       }
     }
 
+    .productIconContainer {
+      width: 5em;
+      text-align: center;
+    }
+
+    .badgeContainer {
+      margin: 0 0.2em 0 auto;
+    }
+
     .productInfo {
+      margin-left: 1.5em;
+
       h3 {
         text-align: center;
       }
@@ -236,11 +251,8 @@ input:active {
   #backgroundImg1 {
     display: inline-block;
     position: absolute;
-    bottom: 2em;
-    left: 2em;
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
+    bottom: 0;
+    left: 0;
+    //width: 50%;
   }
 }

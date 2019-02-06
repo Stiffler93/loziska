@@ -1,7 +1,9 @@
 <section id="ourStockSection">
-  <img id="backgroundImg1" src="/assets/images/FloatingBackground-Bearing1.png" />
+  <!--<img id="backgroundImg1" src="/assets/images/bearing_background.png" />-->
+  <img id="backgroundImg1" src="/assets/images/bearings_background.jpeg" />
 
   <div id="container">
+
     <div id="productDropdown" class="btn-group" dropdown>
       <button id="button-basic" dropdownToggle type="button" class="btn btn-lg dropdown-toggle"
               aria-controls="dropdown-basic">
@@ -27,14 +29,14 @@
         <li role="menuitem" *ngFor="let product of getAvailableProducts()">
           <a class="dropdown-item" (click)="changeProduct(product)">
             <div class="productItem">
-              <div>
+              <div class="productIconContainer">
                 <i class="{{product.icon}}"></i>
               </div>
               <div class="productInfo">
                 <h3>{{product.name | translation | async}}</h3>
-                <span>
-                {{product.text | translation | async}}
-              </span>
+              </div>
+              <div class="badgeContainer">
+                <span class="badge badge-primary">{{product.numData}}</span>
               </div>
             </div>
           </a>
