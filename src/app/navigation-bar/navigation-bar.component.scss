@@ -96,7 +96,7 @@
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
-  flex: 1;
+  margin-bottom: 0.5em;
 }
 
 #menuItems a {
@@ -115,9 +115,15 @@
   }
 }
 
-#navbarSupportedContent > .form-inline {
+#navbarSupportedContent {
+  display: none;
   width: 100%;
-  flex-wrap: nowrap;
+  margin-top: 0.5em;
+
+  & > .form-inline {
+    width: 100%;
+    flex-wrap: nowrap;
+  }
 }
 
 .nav-item {
@@ -129,20 +135,24 @@
 #navbarSupportedContent #contactInformation {
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
   width: 100%;
-  margin-top: 0.5em;
   font-size: 1.2em;
 
   & > a {
     & > div {
       display: inline-flex;
       flex-basis: 50%;
-      flex-direction: column;
       text-align: center;
       padding: 1.5em 1em 0.5em 1em;
 
       & > i {
         font-size: 2em;
+        margin-right: 0.3em;
+      }
+
+      & > span {
+        white-space: nowrap;
       }
     }
   }
@@ -156,7 +166,6 @@
   flex: 1;
 }
 
-/* Small devices (tablets, 768px and up) */
 @media (min-width: 992px) {
 
   #navigationBarDiv {
@@ -260,3 +269,16 @@
   }
 }
 
+
+@media (max-width: 767px) {
+
+  .plainLinkStyle {
+    width: 80%;
+  }
+
+  .markup {
+    text-align: left;
+    padding: 0.5em 1em !important;
+  }
+
+}
