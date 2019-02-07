@@ -33,7 +33,7 @@ export class OurStockComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription[] = [];
 
-  constructor(private data: DataService, private configuration: ConfigurationService, private search: SearchService) {
+  constructor(public data: DataService, public configuration: ConfigurationService, public search: SearchService) {
   }
 
   ngOnInit() {

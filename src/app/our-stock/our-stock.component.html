@@ -11,13 +11,13 @@
         <span class="caret"></span>
       </button>
 
-      <div id="fastFilter" [class.openSearchbar]="search.searchTermSubject.value !== '' || searchBar.focused || searchBar.hovered"
+      <div id="fastFilter" [class.openSearchbar]="search.getSearchTerm() !== '' || searchBar.focused || searchBar.hovered"
            (mouseenter)="searchBar.hovered = true" (mouseleave)="searchBar.hovered = false">
         <input id="filter" class="form-control" type="search"
                placeholder="{{'general.search-product' | translation | async}}" aria-label="Search"
-               [class.visibleInput]="search.searchTermSubject.value !== '' || searchBar.focused || searchBar.hovered"
+               [class.visibleInput]="search.getSearchTerm() !== '' || searchBar.focused || searchBar.hovered"
                (input)="search.change($event.srcElement.value)"
-               [(ngModel)]="search.searchTermSubject.value"
+               [value]="search.onChange() | async"
                (focus)="searchBar.focused = true" (blur)="searchBar.focused = false"/>
         <i class="fa fa-search"></i>
       </div>

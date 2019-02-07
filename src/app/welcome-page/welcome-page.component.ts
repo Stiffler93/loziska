@@ -8,7 +8,7 @@ import {SearchService} from '../services/search.service';
 })
 export class WelcomePageComponent implements OnInit {
 
-  constructor(private search: SearchService) {
+  constructor(public search: SearchService) {
   }
 
   ngOnInit() {

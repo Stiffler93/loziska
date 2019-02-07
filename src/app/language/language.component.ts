@@ -10,9 +10,9 @@ import {TranslationService} from '../services/translation.service';
 })
 export class LanguageComponent implements OnInit {
 
-  @Input('type') private type: string;
+  @Input('type') type: string;
 
-  private languages: Language[] = [];
+  languages: Language[] = [];
 
   constructor(private configuration: ConfigurationService, private translation: TranslationService) {
   }

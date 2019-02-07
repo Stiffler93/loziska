@@ -29,4 +29,9 @@ export class SearchService {
   public isActive(): boolean {
     return this.searchTermSubject.value !== '';
   }
+
+
+  public getSearchTerm(): string {
+    return this.searchTermSubject.value;
+  }
 }
