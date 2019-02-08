@@ -113,7 +113,7 @@ input:active {
 
 #dropdown-basic {
   width: 100%;
-  overflow-x: hidden;
+  max-height: 70vh;
 
   li {
     margin: 0.2em 0;
