@@ -121,8 +121,11 @@
   margin-top: 0.5em;
 
   & > .form-inline {
-    width: 100%;
     flex-wrap: nowrap;
+
+    & > button {
+      margin-left: 0.5em;
+    }
   }
 }
 
@@ -136,7 +139,6 @@
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  width: 100%;
   font-size: 1.2em;
 
   & > a {
@@ -220,7 +222,6 @@
     margin-left: 1em;
     flex-wrap: nowrap;
     justify-content: flex-start;
-    //background-color: rgba(255, 255, 255, 0);
     width: auto;
   }
 
@@ -272,13 +273,16 @@
 
 @media (max-width: 767px) {
 
-  .plainLinkStyle {
-    width: 80%;
-  }
-
   .markup {
     text-align: left;
     padding: 0.5em 1em !important;
+  }
+
+  #contactInformation {
+    display: inline-flex !important;
+    margin: 0 auto !important;
+    justify-content: flex-start !important;
+    flex-basis: fit-content !important;
   }
 
 }
