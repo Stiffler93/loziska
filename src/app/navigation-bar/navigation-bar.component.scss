@@ -172,6 +172,10 @@
 
   #navigationBarDiv {
 
+    .navbar {
+      padding: 0 !important;
+    }
+
     #subNavigation {
       display: flex;
       background-color: rgba($primary, 0.5);
@@ -223,6 +227,7 @@
     flex-wrap: nowrap;
     justify-content: flex-start;
     width: auto;
+    margin-bottom: 0;
   }
 
   #menuItems li {
@@ -232,10 +237,15 @@
     font-size: 1.5em;
   }
 
+  #navbarSupportedContent {
+    margin-top: 0 !important;
+  }
+
   #navbarSupportedContent > .form-inline {
     display: flex;
-    max-width: 12em;
     justify-content: flex-end;
+    max-width: 20em;
+    margin: 0 1em 0 auto;
   }
 
   .nav-item {
@@ -263,10 +273,6 @@
         }
       }
     }
-  }
-
-  #navbarSupportedContent > .form-inline {
-    max-width: 20em;
   }
 }
 
