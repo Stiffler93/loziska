@@ -45,7 +45,7 @@
         <input class="form-control" type="search" placeholder="{{'general.search-product' | translation | async}}"
                aria-label="Search" [value]="search.onChange() | async"
                (input)="search.change($event.srcElement.value)">
-        <button class="btn btn-success" type="submit" (click)="search.trigger()">Search</button>
+        <button class="btn btn-success" type="submit" (click)="isCollapsed = true; search.trigger()">Search</button>
       </form>
     </div>
   </nav>

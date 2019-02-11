@@ -59,6 +59,11 @@ input:active {
     white-space: nowrap;
     overflow: hidden;
 
+    &:active, &:focus, &:after {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+
     i {
       font-size: 1.4em;
       margin: 0.1em;

@@ -124,7 +124,7 @@ export class OurStockComponent implements OnInit, OnDestroy {
       }
     }
 
-    if (this.availableProducts[bestMatch].subproducts) {
+    if (!this.mobileView && this.availableProducts[bestMatch].subproducts) {
       let bestSubMatch = 0;
       for (let i = 1; i < this.availableProducts[bestMatch].subproducts.length; i++) {
         if (this.availableProducts[bestMatch].subproducts[i].numData >
