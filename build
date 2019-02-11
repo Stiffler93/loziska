@@ -1,4 +1,4 @@
-ng build --prod --output-path docs --base-href /loziska/
+ng build --prod --output-path docs --base-href "/loziska/"
 
 echo "Copy index.html to 404.html"
 cp docs/index.html docs/404.html
@@ -9,5 +9,12 @@ git add docs/.nojekyll
 
 echo "Add all new files to git stage"
 git add docs/*
+
+echo "Execute checks:"
+result=`cat docs/index.html | grep "base href" | grep ":"`
+
+if [ "$result" != "" ]; then
+  echo "base href invalid!"
+fi
 
 exit 0
