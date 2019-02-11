@@ -85,7 +85,6 @@ input:active {
     transition-timing-function: linear;
     -webkit-transition: all 0.6s;
     transition: all 0.6s;
-    overflow: hidden;
 
     i {
       width: 1em;
@@ -112,8 +111,14 @@ input:active {
 }
 
 #dropdown-basic {
-  width: 100%;
-  max-height: 70vh;
+  position: fixed;
+  z-index: 1050 !important;
+  width: 90% !important;
+  max-height: 80%;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  overflow-y: auto;
 
   li {
     margin: 0.2em 0;
@@ -178,9 +183,17 @@ input:active {
 
 @media (min-width: 992px) {
 
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
   #ourStockSection {
     flex-direction: row;
     justify-content: center;
+    min-height: 700px;
+    width: 100%;
+    overflow: hidden;
   }
 
   #container {
@@ -255,7 +268,6 @@ input:active {
   }
 }
 
-
 @media (max-width: 767px) {
 
   #productDropdown {
@@ -272,4 +284,16 @@ input:active {
     }
   }
 
+}
+
+@media (max-width: 500px) {
+  .dropdown-item > .productItem {
+    & > .productIconContainer {
+      display: none !important;
+    }
+
+    & > .productInfo {
+      margin-left: 0 !important;
+    }
+  }
 }

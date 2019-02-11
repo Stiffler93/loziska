@@ -1,10 +1,10 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {Product} from './model/Product';
 import {DataService} from '../services/data.service';
 import {ConfigurationService} from '../services/configuration.service';
 import {GridOptions} from 'ag-grid-community';
 import {SearchService} from '../services/search.service';
-import {Observable, Subscription} from 'rxjs';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-our-stock', templateUrl: './our-stock.component.html', styleUrls: ['./our-stock.component.scss']
@@ -13,6 +13,7 @@ export class OurStockComponent implements OnInit, OnDestroy {
 
   private availableProducts: Product[] = [];
   private selectedProduct: Product = new Product('', '', '', '');
+  private mobileView = false;
 
   searchBar = {
     focused: false, hovered: false
@@ -34,6 +35,7 @@ export class OurStockComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   constructor(public data: DataService, public configuration: ConfigurationService, public search: SearchService) {
+    this.onResize();
   }
 
   ngOnInit() {
@@ -55,9 +57,17 @@ export class OurStockComponent implements OnInit, OnDestroy {
     });
   }
 
-  private parseProducts(data: object[], target: Product[]): void {
-    const observables: Observable<Product>[] = [];
+  @HostListener('window:resize', ['$event'])
+  private onResize(): void {
+    console.log('onResize');
+    const newValue = window.innerWidth < 768;
+    if (newValue !== this.mobileView) {
+      this.mobileView = newValue;
+      console.log('mobileView: ' + this.mobileView);
+    }
+  }
 
+  private parseProducts(data: object[], target: Product[]): void {
     data.forEach(productObject => {
       const p: Product = new Product(productObject['name'], productObject['file'], productObject['icon'], productObject['text']);
 
