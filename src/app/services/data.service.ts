@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Product} from '../our-stock/model/Product';
 import {combineLatest, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {AgGridService} from './ag-grid.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class DataService {
   data: object[] = [];
   headers: string[] = [];
 
-  constructor(private papa: Papa, private http: HttpClient) {
+  constructor(private papa: Papa, private http: HttpClient, private agGrid: AgGridService) {
   }
 
   private loadData(product: Product): Observable<Product> {
@@ -45,24 +46,7 @@ export class DataService {
         map(value => {
           this.parseData(value);
           product.gridData = this.data;
-          product.columnDefs = this.headers.filter(header => header !== '')
-            .map((header, index) => {
-              if (index === 0) {
-                return [{
-                  headerName: header,
-                  field: header,
-                  filter: 'agTextColumnFilter'
-                }][0];
-              } else {
-                return [{
-                  headerName: header,
-                  field: header,
-                  getQuickFilterText: function (params) {
-                    return null;
-                  }
-                }][0];
-              }
-            });
+          product.columnDefs = this.agGrid.createColumnDefinitions(this.headers);
 
           return product;
         }));
