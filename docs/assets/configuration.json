@@ -68,5 +68,38 @@
       "icon": "fa fa-ambulance",
       "text": "stock.products.assortment-description"
     }
-  ]
+  ],
+  "ag-grid": {
+    "excludedColumns": [
+      "Zkratka"
+    ],
+    "columnDefinitions": [
+      {
+        "headerName": "Popis",
+        "definitions": {
+          "filter": "agTextColumnFilter"
+        }
+      },
+      {
+        "headerName": "Stav zásoby",
+        "definitions": {
+          "getQuickFilterText": true
+        }
+      },
+      {
+        "headerName": "Cena bez DPH",
+        "definitions": {
+          "getQuickFilterText": true,
+          "currencyFormatter": true
+        }
+      },
+      {
+        "headerName": "Cena s DPH",
+        "definitions": {
+          "getQuickFilterText": true,
+          "currencyFormatter": true
+        }
+      }
+    ]
+  }
 }
