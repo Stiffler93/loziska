@@ -1,0 +1,105 @@
+{
+  "languages": [
+    {
+      "name": "English",
+      "short": "en"
+    },
+    {
+      "name": "Deutsch",
+      "short": "de"
+    },
+    {
+      "name": "Czech",
+      "short": "cz"
+    }
+  ],
+  "products": [
+    {
+      "name": "stock.products.radial-shaft-seals",
+      "file": "Gufera.csv",
+      "icon": "fa fa-universal-access",
+      "text": "stock.products.radial-shaft-seals-description"
+    },
+    {
+      "name": "stock.products.fan-belts",
+      "file": "Klinove_remeny.csv",
+      "icon": "fa fa-ambulance",
+      "text": "stock.products.fan-belts-description"
+    },
+    {
+      "name": "stock.products.ball-bearings",
+      "icon": "fa fa-universal-access",
+      "text": "stock.products.ball-bearings-description",
+      "products": [
+        {
+          "name": "stock.products.ball-bearings-SKF-NSK-FAG",
+          "file": "SKF_FAG_NSK.csv",
+          "icon": "fa fa-universal-access",
+          "text": "stock.products.ball-bearings-SKF-NSK-FAG-description"
+        },
+        {
+          "name": "stock.products.ball-bearings-ZKL-ZKV",
+          "file": "ZKL_ZKV.csv",
+          "icon": "fa fa-universal-access",
+          "text": "stock.products.ball-bearings-ZKL-ZKV-description"
+        },
+        {
+          "name": "stock.products.ball-bearings-Domeckova",
+          "file": "Domeckova.csv",
+          "icon": "fa fa-universal-access",
+          "text": "stock.products.ball-bearings-Domeckova-description"
+        }
+      ]
+    },
+    {
+      "name": "stock.products.o-rings",
+      "file": "O-krouzky.csv",
+      "icon": "fa fa-ambulance",
+      "text": "stock.products.o-rings-description"
+    },
+    {
+      "name": "stock.products.Scheiß",
+      "file": "Segerovy.csv",
+      "icon": "fa fa-universal-access",
+      "text": "stock.products.Scheiß-description"
+    },
+    {
+      "name": "stock.products.assortment",
+      "icon": "fa fa-ambulance",
+      "text": "stock.products.assortment-description"
+    }
+  ],
+  "ag-grid": {
+    "excludedColumns": [
+      "Zkratka"
+    ],
+    "columnDefinitions": [
+      {
+        "headerName": "Popis",
+        "definitions": {
+          "filter": "agTextColumnFilter"
+        }
+      },
+      {
+        "headerName": "Stav zásoby",
+        "definitions": {
+          "getQuickFilterText": true
+        }
+      },
+      {
+        "headerName": "Cena bez DPH",
+        "definitions": {
+          "getQuickFilterText": true,
+          "currencyFormatter": true
+        }
+      },
+      {
+        "headerName": "Cena s DPH",
+        "definitions": {
+          "getQuickFilterText": true,
+          "currencyFormatter": true
+        }
+      }
+    ]
+  }
+}
