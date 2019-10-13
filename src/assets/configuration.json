@@ -17,13 +17,13 @@
     {
       "name": "stock.products.radial-shaft-seals",
       "file": "Gufera.csv",
-      "icon": "fa fa-universal-access",
+      "icon": "fa fa-caret-right",
       "text": "stock.products.radial-shaft-seals-description"
     },
     {
       "name": "stock.products.ball-bearings",
       "file": "Ložiska.csv",
-      "icon": "fa fa-universal-access",
+      "icon": "fa fa-caret-right",
       "text": "stock.products.ball-bearings-description"
     }
   ],
