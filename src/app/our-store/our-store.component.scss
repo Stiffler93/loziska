@@ -10,11 +10,7 @@
   flex-direction: column;
   justify-content:center;
   width: 100%;
-  background: #afafaf; /* Old browsers */
-  background: -moz-linear-gradient(-45deg, #6b6b6b 0%, #efefef 20%, #efefef 80%, #6b6b6b 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg, #6b6b6b 0%, #efefef 20%, #efefef 80%, #6b6b6b 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(135deg, #6b6b6b 0%, #efefef 20%, #efefef 80%, #6b6b6b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efefef', endColorstr='#6b6b6b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  background: #efefef;
 }
 
 #ourStoreSection #openingTimes {

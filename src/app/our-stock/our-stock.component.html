@@ -49,16 +49,6 @@
           <span>{{product.name | translation | async}}</span>
           <span class="badge badge-primary">{{product.numData}}</span>
 
-          <div *ngIf="product.subproducts" class="collapse mt-3" [collapse]="isCollapsed(product)">
-            <button *ngFor="let subproduct of product.subproducts" class="list-group-item list-group-item-action"
-                    [class.active]="getSelectedProduct().name === subproduct.name"
-                    (click)="changeProduct(subproduct); $event.stopPropagation()">
-              <i class="{{subproduct.icon}} mr-3"></i>
-              <span>{{subproduct.name | translation | async}}</span>
-              <span class="badge badge-primary">{{subproduct.numData}}</span>
-            </button>
-          </div>
-
         </button>
       </div>
 

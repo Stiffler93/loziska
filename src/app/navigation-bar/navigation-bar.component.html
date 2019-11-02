@@ -2,9 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-light">
     <a class="navbar-brand" routerLink="/" (click)="isCollapsed = true" [class.active-page]="'/' === router.url">
 
-      <svg class="navbar-logo">
-        <use class="logo-use" xlink:href="#logo"></use>
-      </svg>
+      <img class="navbar-logo" src="assets/images/loziska.png">
     </a>
 
     <app-language type="dropdown" id="languageSelector"></app-language>

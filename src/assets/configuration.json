@@ -43,20 +43,6 @@
         "definitions": {
           "getQuickFilterText": true
         }
-      },
-      {
-        "headerName": "Cena bez DPH",
-        "definitions": {
-          "getQuickFilterText": true,
-          "currencyFormatter": true
-        }
-      },
-      {
-        "headerName": "Cena s DPH",
-        "definitions": {
-          "getQuickFilterText": true,
-          "currencyFormatter": true
-        }
       }
     ]
   }

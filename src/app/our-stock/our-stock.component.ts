@@ -26,6 +26,7 @@ export class OurStockComponent implements OnInit, OnDestroy {
       const subscription = this.search.onChange().subscribe(value => {
         if (this.gridOptions.api) {
           this.gridOptions.api.setQuickFilter(value);
+          this.switchToProductWithMostMatches();
         }
       });
       this.subscriptions.push(subscription);
@@ -124,19 +125,7 @@ export class OurStockComponent implements OnInit, OnDestroy {
       }
     }
 
-    if (!this.mobileView && this.availableProducts[bestMatch].subproducts) {
-      let bestSubMatch = 0;
-      for (let i = 1; i < this.availableProducts[bestMatch].subproducts.length; i++) {
-        if (this.availableProducts[bestMatch].subproducts[i].numData >
-          this.availableProducts[bestMatch].subproducts[bestSubMatch].numData) {
-          bestSubMatch = i;
-        }
-      }
-
-      this.changeProduct(this.availableProducts[bestMatch].subproducts[bestSubMatch]);
-    } else {
-      this.changeProduct(this.availableProducts[bestMatch]);
-    }
+    this.changeProduct(this.availableProducts[bestMatch]);
   }
 
 }
