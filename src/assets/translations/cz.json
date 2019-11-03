@@ -1,7 +1,7 @@
 {
   "nav": {
     "our-store": "Produkty",
-    "our-stock": "Unser Lager"
+    "our-stock": "Náš sklad"
   },
   "welcome": {
     "title": "Ložiska",
@@ -20,29 +20,14 @@
     "products": {
       "radial-shaft-seals": "Gufero, Simmerring",
       "radial-shaft-seals-description": "NBR, MVQ, FPM",
-      "fan-belts": "Klínové řemeny",
-      "fan-belts-description": "Specifikace klínových řemenů",
       "ball-bearings": "Ložiška",
-      "ball-bearings-description": "Specifikace ložisek",
-      "ball-bearings-SKF-NSK-FAG": "SKF, NSK, FAG",
-      "ball-bearings-SKF-NSK-FAG-description": "Specifikace SKF, NSK, FAG",
-      "ball-bearings-ZKL-ZKV": "ZKL, ZKV",
-      "ball-bearings-ZKL-ZKV-description": "Specifikace ZKL, ZKV",
-      "ball-bearings-Domeckova": "Domečková ložiska",
-      "ball-bearings-Domeckova-description": "Specifikace domečkových ložisek",
-      "o-rings": "O-kroužky",
-      "o-rings-description": "Specifikace O-kroužky",
-      "Scheiß": "Hovno",
-      "Scheiß-description": "specifikace hovna",
-      "assortment": "Sortiment",
-      "assortment-description": "Sortiment specifikace"
+      "ball-bearings-description": "Specifikace ložisek"
     },
     "table-headlines": {
-      "Popis": "Beschreibung",
+      "Popis": "Popis",
       "Stav zásoby": "Stav zásoby",
       "Cena bez DPH": "Cena bez DPH",
-      "Cena s DPH": "Cena s DPH",
-      "Zkratka": "Zkratka"
+      "Cena s DPH": "Cena s DPH"
     }
   },
   "general": {
@@ -50,7 +35,6 @@
     "email-address": "loziskaharuda@seznam.cz",
     "address": "Otín 252, areál čerpací stanice JH-Oil, Jindřichův Hradec",
     "search-product": "Hledat Product",
-    "search": "Search"
+    "search": "Hledat"
   }
 }
-
