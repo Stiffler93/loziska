@@ -1,19 +1,19 @@
 {
   "nav": {
-    "our-store": "Unser Geschäft",
-    "our-stock": "Unser Lager"
+    "our-store": "Geschäft",
+    "our-stock": "Lager"
   },
   "welcome": {
     "title": "Ložiska",
     "subtitle": "Václav Haruda",
     "supplier-head": "Ihr Anbieter für Service Zubehör",
     "headline": "Herzlich Willkommen!",
-    "introduction": "Naše společnost Vám nabízí jen ty nejkvalitnější služby v oboru. Neváhejte a využijte našich kvalitních služeb, moderních metod. Náš profesionální personál je vám vždy plně k dispozici. Naší předností je neustálé zkvalitňování a vylepšování námi nabízených služeb. Důkazem je stále vzrůstající počet spokojených zákazníků."
+    "introduction": "Wir bieten eine breite Skale von Kugellagern, Keilriemen, Wellendichtungen, O-Ringen, Sicherungsringen, Kupfer-Beilagescheiben, Schmiernippeln und anderen Lagerzubehörn an. Wir bieten die größte Qualität von den Produkten und Dienstleistungen. Wir konzentrieren uns auf die kontinuierliche Verbesserung unseren Dienstleistungen und wir erhöhen die Menge von unserem Sortiment. Das beweisen wir mit der steigenden Anzahl unserer zufriedenen Kunden. Besuchen Sie unsere Filiale oder kontaktieren Sie uns per Email oder Telefon."
   },
   "store": {
     "opening-times": "Wir haben geöffnet: Mo-Fr 7:30 - 15:30",
     "headline": "Herzlich Willkommen!",
-    "introduction": "Naše společnost Vám nabízí jen ty nejkvalitnější služby v oboru. Neváhejte a využijte našich kvalitních služeb, moderních metod. Náš profesionální personál je vám vždy plně k dispozici. Naší předností je neustálé zkvalitňování a vylepšování námi nabízených služeb. Důkazem je stále vzrůstající počet spokojených zákazníků.",
+    "introduction": "Wir bieten eine breite Skale von Kugellagern, Keilriemen, Wellendichtungen, O-Ringen, Sicherungsringen, Kupfer-Beilagescheiben, Schmiernippeln und anderen Lagerzubehörn an. Wir bieten die größte Qualität von den Produkten und Dienstleistungen. Wir konzentrieren uns auf die kontinuierliche Verbesserung unseren Dienstleistungen und wir erhöhen die Menge von unserem Sortiment. Das beweisen wir mit der steigenden Anzahl unserer zufriedenen Kunden. Besuchen Sie unsere Filiale oder kontaktieren Sie uns per Email oder Telefon.",
     "location-pretext": "Wo Sie uns finden:"
   },
   "stock": {
@@ -33,7 +33,7 @@
   "general": {
     "phone-number": "+420 602 219 188",
     "email-address": "loziskaharuda@seznam.cz",
-    "address": "Otín 252, areál čerpací stanice JH-Oil, Jindřichův Hradec",
+    "address": "Otín 252, 377 01 Jindřichův Hradec, Czech Republic",
     "search-product": "Produkt suchen",
     "search": "Suchen"
   }

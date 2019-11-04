@@ -1,19 +1,19 @@
 {
   "nav": {
-    "our-store": "Our Shop",
-    "our-stock": "Our Stock"
+    "our-store": "Shop",
+    "our-stock": "Stock"
   },
   "welcome": {
     "title": "Ložiska",
     "subtitle": "Václav Haruda",
     "supplier-head": "Your supplier of bearings",
     "headline": "Welcome to our website!",
-    "introduction": "Naše společnost Vám nabízí jen ty nejkvalitnější služby v oboru. Neváhejte a využijte našich kvalitních služeb, moderních metod. Náš profesionální personál je vám vždy plně k dispozici. Naší předností je neustálé zkvalitňování a vylepšování námi nabízených služeb. Důkazem je stále vzrůstající počet spokojených zákazníků."
+    "introduction": "We company offers a wide range of bearings, V-belts, Shaft Seals, O-rings, Seeger Circlips, Copper Crash Washers, Grease nipples and other bearings accessories. Our company offers you the high-quality goods and services in the field. We are focused on continual improvement our provided services and increasing range of our goods. That’s evident in increasing numbers of our satisfied customers. Feel free to visit us in our branch or contact us via email or phone."
   },
   "store": {
     "opening-times": "Opening times: Mo - Fr 7:30 - 15:30",
     "headline": "Welcome to our website!",
-    "introduction": "Naše společnost Vám nabízí jen ty nejkvalitnější služby v oboru. Neváhejte a využijte našich kvalitních služeb, moderních metod. Náš profesionální personál je vám vždy plně k dispozici. Naší předností je neustálé zkvalitňování a vylepšování námi nabízených služeb. Důkazem je stále vzrůstající počet spokojených zákazníků.",
+    "introduction": "We company offers a wide range of bearings, V-belts, Shaft Seals, O-rings, Seeger Circlips, Copper Crash Washers, Grease nipples and other bearings accessories. Our company offers you the high-quality goods and services in the field. We are focused on continual improvement our provided services and increasing range of our goods. That’s evident in increasing numbers of our satisfied customers. Feel free to visit us in our branch or contact us via email or phone.",
     "location-pretext": "Where you can find us:"
   },
   "stock": {
@@ -33,7 +33,7 @@
   "general": {
     "phone-number": "+420 602 219 188",
     "email-address": "loziskaharuda@seznam.cz",
-    "address": "Otín 252, areál čerpací stanice JH-Oil, Jindřichův Hradec",
+    "address": "Otín 252, 377 01 Jindřichův Hradec, Czech Republic",
     "search-product": "Search Product",
     "search": "Search"
   }

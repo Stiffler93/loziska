@@ -2,7 +2,8 @@
   <nav class="navbar navbar-expand-lg navbar-light">
     <a class="navbar-brand" routerLink="/" (click)="isCollapsed = true" [class.active-page]="'/' === router.url">
 
-      <img class="navbar-logo" src="assets/images/loziska.png">
+      <img *ngIf="router.url === '/'" class="navbar-logo" src="assets/images/loziska_active.png">
+      <img *ngIf="router.url !== '/'" class="navbar-logo" src="assets/images/loziska_inactive.png">
     </a>
 
     <app-language type="dropdown" id="languageSelector"></app-language>
@@ -43,10 +44,13 @@
         <input class="form-control" type="search" placeholder="{{'general.search-product' | translation | async}}"
                aria-label="Search" [value]="search.onChange() | async"
                (input)="search.change($event.srcElement.value)">
-        <button class="btn btn-success" type="submit" (click)="isCollapsed = true; search.trigger()">Search</button>
+        <button class="btn btn-success" type="submit"
+                (click)="isCollapsed = true; search.trigger()">{{"general.search" | translation |
+            async}}</button>
       </form>
     </div>
   </nav>
+
   <div id="subNavigation">
     <div id="contactInformationSubBar">
       <a class="plainLinkStyle" href="tel:{{'general.phone-number' | translation | async}}">
@@ -65,4 +69,5 @@
 
     <app-language id="languageSelectorSubBar"></app-language>
   </div>
+
 </div>

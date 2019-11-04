@@ -1,19 +1,19 @@
 {
   "nav": {
-    "our-store": "Produkty",
-    "our-stock": "Náš sklad"
+    "our-store": "Provozovna",
+    "our-stock": "Sklad"
   },
   "welcome": {
     "title": "Ložiska",
     "subtitle": "Václav Haruda",
     "supplier-head": "Váš poskytovatel ložisek",
     "headline": "Vítejte na našich stránkách",
-    "introduction": "Naše společnost Vám nabízí jen ty nejkvalitnější služby v oboru. Neváhejte a využijte našich kvalitních služeb, moderních metod. Náš profesionální personál je vám vždy plně k dispozici. Naší předností je neustálé zkvalitňování a vylepšování námi nabízených služeb. Důkazem je stále vzrůstající počet spokojených zákazníků."
+    "introduction": "Naše společnost nabízí širokou škálu ložisek, klínových řemenů, gufer, o-kroužků, segrových pojistek, měděných podložek, mazniček a dalšího příslušenství.  Naše společnost Vám nabízí jen ty nejkvalitnější služby v oboru. Náš profesionální personál je vám vždy plně k dispozici. Naší předností je neustálé zkvalitňování a vylepšování námi nabízených služeb. Důkazem je stále vzrůstající počet spokojených zákazníků. Neváhejte a také využijte našich služeb."
   },
   "store": {
     "opening-times": "Otevírací doba: Po - Pá 7:30 - 15:30",
     "headline": "Vítejte na našich stránkách",
-    "introduction": "Naše společnost Vám nabízí jen ty nejkvalitnější služby v oboru. Neváhejte a využijte našich kvalitních služeb, moderních metod. Náš profesionální personál je vám vždy plně k dispozici. Naší předností je neustálé zkvalitňování a vylepšování námi nabízených služeb. Důkazem je stále vzrůstající počet spokojených zákazníků.",
+    "introduction": "Naše společnost nabízí širokou škálu ložisek, klínových řemenů, gufer, o-kroužků, segrových pojistek, měděných podložek, mazniček a dalšího příslušenství.  Naše společnost Vám nabízí jen ty nejkvalitnější služby v oboru. Náš profesionální personál je vám vždy plně k dispozici. Naší předností je neustálé zkvalitňování a vylepšování námi nabízených služeb. Důkazem je stále vzrůstající počet spokojených zákazníků. Neváhejte a také využijte našich služeb.",
     "location-pretext": "Kde nás naleznete:"
   },
   "stock": {
@@ -33,8 +33,8 @@
   "general": {
     "phone-number": "+420 602 219 188",
     "email-address": "loziskaharuda@seznam.cz",
-    "address": "Otín 252, areál čerpací stanice JH-Oil, Jindřichův Hradec",
-    "search-product": "Hledat Product",
+    "address": "Otín 252, 377 01 Jindřichův Hradec, Czech Republic",
+    "search-product": "Hledat Produkt",
     "search": "Hledat"
   }
 }

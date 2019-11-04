@@ -238,7 +238,7 @@
   }
 
   #navbarSupportedContent {
-    margin-top: 0 !important;
+    margin-top: 0.4em !important;
   }
 
   #navbarSupportedContent > .form-inline {
@@ -256,6 +256,7 @@
   #navbarSupportedContent #contactInformation {
     display: none;
     margin-top: 0;
+    margin-bottom: 0.2em;
     justify-content: flex-end;
     width: auto;
 
@@ -286,6 +287,7 @@
   #contactInformation {
     display: inline-flex !important;
     margin: 0 auto !important;
+    margin-bottom: 0.5em !important;
     justify-content: flex-start !important;
     flex-basis: fit-content !important;
   }
